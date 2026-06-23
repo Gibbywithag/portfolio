@@ -28,7 +28,7 @@
     --on-gold:#14120f;
   }
   html[data-theme="light"]{
-    --bg:#f5f2ec; --bg-card:#fdfcfa; --bg-card-2:#f9f5ee;
+    --bg:#f5f2ec; --bg-card:#fdfcfa; --bg-card-2:#f9f5ee; --band:#ece4d4;
     --ink:#121110; --hero:#0e0d0c; --muted:#7d766c;
     --line:rgba(18,17,16,.10); --line-strong:rgba(18,17,16,.18);
     --gold:#b08a45; --gold-deco:#c4a574; --gold-soft:rgba(196,165,116,.20);
@@ -38,7 +38,7 @@
     --grain-op:.045;
   }
   html[data-theme="dark"]{
-    --bg:#14120f; --bg-card:#1d1a16; --bg-card-2:#221d18;
+    --bg:#14120f; --bg-card:#1d1a16; --bg-card-2:#221d18; --band:#1a1712;
     --ink:#efe9dd; --hero:#fbf7ee; --muted:#a39a8c;
     --line:rgba(231,221,200,.10); --line-strong:rgba(231,221,200,.20);
     --gold:#d8b87f; --gold-deco:#caa977; --gold-soft:rgba(212,180,131,.16);
@@ -106,8 +106,14 @@
   .btn.primary:hover{filter:brightness(1.06)}
 
   /* sections */
-  section{padding:70px 0;position:relative;z-index:2}
-  .sec-head{margin-bottom:34px}
+  section{padding:84px 0;position:relative;z-index:2}
+  section.band{background:var(--band);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    transition:background .45s var(--ease),border-color .45s var(--ease)}
+  .sec-head{margin-bottom:38px}
+  .sec-meta{display:flex;align-items:center;gap:14px;border-top:1.5px solid var(--gold-soft);padding-top:15px}
+  .sec-num{font-family:var(--font-display);font-size:23px;line-height:1;color:var(--gold)}
+  .sec-meta .eyebrow{color:var(--muted)}
+  .sec-head h2{margin-top:16px}
   h2{font-family:var(--font-display);font-weight:400;color:var(--hero);
     font-size:clamp(28px,4vw,40px);margin-top:8px;letter-spacing:-.3px}
   .about p{max-width:780px;font-size:18px;color:var(--ink);opacity:.86;margin-bottom:16px}
@@ -197,14 +203,14 @@
   </div>
 </div></header>
 
-<section id="about" class="about"><div class="wrap reveal">
-  <div class="sec-head"><div class="eyebrow">About</div><h2>A builder with an unusual edge</h2></div>
+<section id="about" class="about band"><div class="wrap reveal">
+  <div class="sec-head"><div class="sec-meta"><span class="sec-num">01</span><span class="eyebrow">About</span></div><h2>A builder with an unusual edge</h2></div>
   <p>I produce broadcast and field video for Metro Nashville government — and I taught myself software and AI engineering to build the tools that make that work faster. That combination runs through everything I make: real computer-vision and speech-to-text pipelines, LLM-powered automation, full-stack web apps, and a shipped iOS app.</p>
   <p>I'm comfortable across the whole stack — Python and TypeScript, FastAPI and React, serverless backends, Docker, and CI/CD — and I care most about products that are genuinely <em>zero-setup</em> for the people who use them.</p>
 </div></section>
 
 <section id="work"><div class="wrap">
-  <div class="sec-head reveal"><div class="eyebrow">Selected Work</div><h2>Things I've built &amp; shipped</h2></div>
+  <div class="sec-head reveal"><div class="sec-meta"><span class="sec-num">02</span><span class="eyebrow">Selected Work</span></div><h2>Things I've built &amp; shipped</h2></div>
   <div class="bento">
 
     <article class="card feature reveal">
@@ -252,8 +258,8 @@
   </div>
 </div></section>
 
-<section id="skills"><div class="wrap">
-  <div class="sec-head reveal"><div class="eyebrow">Skills</div><h2>Tools I work with</h2></div>
+<section id="skills" class="band"><div class="wrap">
+  <div class="sec-head reveal"><div class="sec-meta"><span class="sec-num">03</span><span class="eyebrow">Skills</span></div><h2>Tools I work with</h2></div>
   <div class="skills">
     <div class="skillrow reveal"><b>Languages</b><div class="stack"><span>Python</span><span>TypeScript</span><span>JavaScript</span><span>Swift</span><span>SQL</span></div></div>
     <div class="skillrow reveal"><b>Frontend</b><div class="stack"><span>React</span><span>Next.js</span><span>Vite</span><span>Tailwind</span><span>Electron</span></div></div>
@@ -265,7 +271,7 @@
 
 <section id="contact"><div class="wrap reveal">
   <div class="contact-card">
-    <div class="eyebrow">Contact</div>
+    <div class="eyebrow">04 · Contact</div>
     <h2>Let's build something</h2>
     <p>Open to remote software &amp; AI engineering roles. The fastest way to reach me:</p>
     <div class="cta">
