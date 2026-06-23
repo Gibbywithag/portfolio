@@ -140,13 +140,12 @@
   }
 
   /* skills */
-  .skills{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:16px}
   .skillrow{background:var(--bg-card);border:1px solid var(--line);border-radius:var(--radius);padding:20px;
     transition:.3s var(--ease)}
   .skillrow:hover{border-color:var(--gold-deco)}
   .skillrow b{display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;
     text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:12px}
-  @media(max-width:760px){.skills{grid-template-columns:1fr 1fr}}
   @media(max-width:460px){.skills{grid-template-columns:1fr}}
 
   /* contact */
@@ -260,6 +259,7 @@
     <div class="skillrow reveal"><b>Frontend</b><div class="stack"><span>React</span><span>Next.js</span><span>Vite</span><span>Tailwind</span><span>Electron</span></div></div>
     <div class="skillrow reveal"><b>Backend / Cloud</b><div class="stack"><span>FastAPI</span><span>Node.js</span><span>Cloudflare</span><span>Vercel</span><span>Docker</span></div></div>
     <div class="skillrow reveal"><b>AI / ML</b><div class="stack"><span>OpenAI</span><span>Gemini</span><span>YOLO</span><span>Whisper</span><span>PyTorch</span></div></div>
+    <div class="skillrow reveal"><b>AI-Assisted Dev</b><div class="stack"><span>Cursor</span><span>Claude Code</span><span>Codex</span><span>Prompt Eng</span><span>Agentic Coding</span></div></div>
   </div>
 </div></section>
 
