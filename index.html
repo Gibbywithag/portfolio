@@ -90,11 +90,7 @@
 
   /* hero */
   header{padding:clamp(52px,12vw,96px) 0 clamp(44px,9vw,76px);position:relative;overflow:hidden}
-  header::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
-    background:
-      radial-gradient(900px 460px at 78% -8%,var(--gold-soft),transparent 62%),
-      radial-gradient(700px 460px at 6% 14%,var(--sage-soft),transparent 58%);
-    transition:opacity .45s var(--ease)}
+  header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--line)}
   header .wrap{position:relative;z-index:2}
   h1{font-family:var(--font-display);font-weight:400;color:var(--hero);
     font-size:clamp(34px,8vw,80px);line-height:1.05;margin:16px 0 10px;letter-spacing:-.5px}
@@ -189,7 +185,7 @@
 </head>
 <body>
 <nav><div class="wrap">
-  <div class="brand">Gil<span class="dot">.</span>Laureano</div>
+  <div class="brand">Gilbran Laureano</div>
   <div class="nav-right">
     <div class="nav-links">
       <a href="#about">About</a>
@@ -206,9 +202,9 @@
 
 <header><div class="wrap">
   <div class="eyebrow">Software &amp; AI Engineer · Nashville, TN</div>
-  <h1>Gilbran <span class="it">“Gil”</span> Laureano</h1>
+  <h1>Gilbran Laureano</h1>
   <div class="role">Full-Stack · AI/ML · AI Video &amp; Media Tooling</div>
-  <p class="lead">I ship end-to-end AI products — from model integration to serverless backends to the App Store. I pair a professional video &amp; media-production background with the ability to build the AI tools that automate it.</p>
+  <p class="lead">I produce broadcast video for Metro Nashville by day. Nights and weekends I taught myself to build software — and now I make the AI tools I wish existed for media work. A live iOS app, a couple of desktop apps, and a stack of things that turn raw video into something useful.</p>
   <div class="cta">
     <a class="btn primary" href="#work">View my work</a>
     <a class="btn" href="mailto:gilbranlaureano0417@gmail.com">Get in touch</a>
@@ -218,8 +214,8 @@
 
 <section id="about" class="about band"><div class="wrap reveal">
   <div class="sec-head"><div class="sec-meta"><span class="sec-num">01</span><span class="eyebrow">About</span></div><h2>A builder with an unusual edge</h2></div>
-  <p>I produce broadcast and field video for Metro Nashville government — and I taught myself software and AI engineering to build the tools that make that work faster. That combination runs through everything I make: real computer-vision and speech-to-text pipelines, LLM-powered automation, full-stack web apps, and a shipped iOS app.</p>
-  <p>I'm comfortable across the whole stack — Python and TypeScript, FastAPI and React, serverless backends, Docker, and CI/CD — and I care most about products that are genuinely <em>zero-setup</em> for the people who use them.</p>
+  <p>Most of what I know, I learned because I needed it. A pile of clips needed naming, so I built a tool that names them. Hours of sermon footage needed cutting, so I built something that finds the good parts. That's the pattern — hit a real problem, build the thing, ship it.</p>
+  <p>Under the hood that's meant computer vision, speech-to-text, LLMs, and full-stack web work — Python and TypeScript, FastAPI and React, Docker, the usual suspects. But I care less about the stack than whether the thing actually <em>works</em> for the person using it.</p>
 </div></section>
 
 <section id="work"><div class="wrap">
