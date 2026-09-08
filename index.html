@@ -1,53 +1,821 @@
 <!doctype html>
 <html lang="en" data-theme="light">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Gilbran Laureano — Software & AI Engineer</title>
-  <meta name="description" content="Gilbran Laureano builds AI products, intelligent video tools, full-stack systems, and automation that ship." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <script>(function(){try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}})()</script>
-  <style>
-    :root{--bg:#f5f2ec;--panel:#fdfcfa;--panel2:#f9f5ee;--text:#121110;--muted:#7d766c;--line:rgba(18,17,16,.11);--lime:#b08a45;--cyan:#3d5c50;--orange:#a76f32;--shadow:0 20px 70px rgba(18,17,16,.13);--display:'Instrument Serif',Georgia,serif;--body:'Plus Jakarta Sans',system-ui,sans-serif;--mono:'DM Mono',ui-monospace,monospace}
-    [data-theme=dark]{--bg:#14120f;--panel:#1d1a16;--panel2:#221d18;--text:#efe9dd;--muted:#a39a8c;--line:rgba(231,221,200,.12);--lime:#d8b87f;--cyan:#7fa894;--orange:#d69b61;--shadow:0 20px 70px rgba(0,0,0,.42)}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.65 var(--body);overflow-x:hidden}body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.045;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:28px 28px}a{color:inherit;text-decoration:none}.shell{width:min(1080px,calc(100% - 36px));margin:auto;position:relative;z-index:1}.mono{font:12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--lime)}
-    .topbar{height:68px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(14px)}.topbar .shell{display:flex;align-items:center;justify-content:space-between;height:100%}.brand{font:400 25px var(--display);letter-spacing:.01em}.brand i{color:var(--lime);font-style:normal}.top-actions{display:flex;gap:10px;align-items:center}.icon-btn,.link-btn{border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:999px;padding:9px 13px;cursor:pointer;font:12px var(--mono);transition:.2s}.icon-btn:hover,.link-btn:hover{border-color:var(--lime);transform:translateY(-2px)}
-    .hero{min-height:calc(100vh - 68px);display:grid;align-items:center;padding:70px 0 65px;position:relative}.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:7vw;align-items:center}.hero h1{font:400 clamp(52px,8vw,88px)/.98 var(--display);letter-spacing:-.035em;margin:18px 0 15px;max-width:850px}.hero h1 span{color:var(--lime);font-style:italic}.hero-copy{font-size:clamp(16px,1.5vw,19px);line-height:1.6;color:var(--muted);max-width:680px}.hero-copy strong{color:var(--text);font-weight:600}.hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}.btn{display:inline-flex;align-items:center;gap:9px;border-radius:10px;border:1px solid var(--line);padding:12px 17px;background:var(--panel);font-weight:600;transition:.2s}.btn:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--lime)}.btn.primary{background:var(--lime);border-color:var(--lime);color:#17130d}.hero-terminal{background:linear-gradient(145deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);overflow:hidden;transform:rotate(1deg);transition:.4s}.hero-terminal:hover{transform:rotate(0) translateY(-5px)}.terminal-head{padding:13px 17px;border-bottom:1px solid var(--line);display:flex;gap:7px}.terminal-head b{width:9px;height:9px;border-radius:50%;background:var(--lime)}.terminal-head b:nth-child(2){background:var(--orange)}.terminal-head b:nth-child(3){background:var(--cyan)}.terminal-body{padding:26px;font:14px/1.9 var(--body);color:var(--muted)}.terminal-body .green{color:var(--lime)}.terminal-body .cyan{color:var(--cyan)}.terminal-body .orange{color:var(--orange)}.signal{border-top:1px solid var(--line);margin-top:20px;padding-top:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.signal strong{display:block;font:400 29px var(--display);color:var(--text)}.signal span{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
-    .tabs-wrap{position:sticky;top:68px;z-index:15;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(14px);border-block:1px solid var(--line)}.tabs{display:flex;gap:18px;overflow:auto;padding:10px 0}.tab{white-space:nowrap;border:0;background:transparent;color:var(--muted);padding:10px 4px;border-radius:0;cursor:pointer;font:500 14px var(--body);border-bottom:1px solid transparent}.tab:hover{color:var(--text)}.tab.active{color:var(--text);border-bottom-color:var(--lime)}.view{display:none;padding:72px 0 100px;animation:in .35s ease;scroll-margin-top:145px}.view.active{display:block}@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}.view-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:25px}.view-head h2{font:400 clamp(34px,5vw,58px)/1.04 var(--display);letter-spacing:-.025em;margin:10px 0 0}.view-head p{max-width:460px;color:var(--muted);margin:0}.work-notes{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:15px;overflow:hidden;margin-bottom:28px}.work-note{background:var(--panel);padding:14px 17px;min-height:78px}.work-note b{display:block;font:11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--lime);margin-bottom:4px}.work-note span{display:block;color:var(--muted);font-size:12px;line-height:1.45}.pulse{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--cyan);margin-right:6px;box-shadow:0 0 0 0 color-mix(in srgb,var(--cyan) 60%,transparent);animation:pulse 2.4s infinite}@keyframes pulse{70%{box-shadow:0 0 0 7px transparent}100%{box-shadow:0 0 0 0 transparent}}
-    .feature-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:15px}.project{grid-column:span 6;background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.3s}.project:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:color-mix(in srgb,var(--lime) 60%,var(--line))}.project.wide{grid-column:span 8}.project.small{grid-column:span 4}.project-media{height:240px;background:var(--panel2);overflow:hidden;position:relative}.project-media img{width:100%;height:100%;object-fit:cover;display:block;transition:.5s}.project:hover .project-media img{transform:scale(1.035)}.project-media.contain img{object-fit:contain;padding:16px}.project-body{padding:24px}.project-kicker{color:var(--lime);font:11px var(--mono);text-transform:uppercase;letter-spacing:.08em}.project h3{font:400 30px/1.08 var(--display);letter-spacing:-.015em;margin:10px 0}.project p{color:var(--muted);margin:0}.project-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:22px}.chips{display:flex;gap:6px;flex-wrap:wrap}.chip{border:1px solid var(--line);border-radius:999px;padding:4px 8px;color:var(--muted);font:10px var(--mono)}.repo{color:var(--cyan);font:12px var(--mono);white-space:nowrap}.repo:hover{text-decoration:underline}.case-note{border-left:2px solid var(--lime);padding-left:14px;color:var(--text);margin-top:18px;font-size:13px}.case-note b{color:var(--lime)}
-    .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px}.about-grid h3{font:400 34px/1.1 var(--display);letter-spacing:-.02em;margin:0 0 18px}.about-grid p{font-size:18px;color:var(--muted);max-width:680px}.principles{display:grid;gap:12px}.principle{background:var(--panel);border:1px solid var(--line);padding:18px;border-radius:14px}.principle b{display:block;color:var(--lime);margin-bottom:3px}.principle span{color:var(--muted);font-size:13px}.skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.skill{border:1px solid var(--line);background:var(--panel);padding:22px;border-radius:15px}.skill b{color:var(--lime);font:12px var(--mono);text-transform:uppercase}.skill p{color:var(--muted);margin-bottom:0}.contact{background:linear-gradient(135deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:20px;padding:clamp(28px,7vw,75px);display:flex;justify-content:space-between;align-items:end;gap:30px}.contact h2{font:400 clamp(38px,6vw,70px)/.98 var(--display);letter-spacing:-.02em;margin:12px 0}.contact p{color:var(--muted);max-width:480px}.contact .hero-cta{margin:0}.footer{border-top:1px solid var(--line);padding:24px 0 35px;color:var(--muted);font:11px var(--mono);display:flex;justify-content:space-between;gap:15px}.icon-btn:focus-visible,.link-btn:focus-visible,.btn:focus-visible,.tab:focus-visible{outline:2px solid var(--lime);outline-offset:4px}
-    @media(max-width:800px){.hero-grid,.about-grid{grid-template-columns:1fr}.hero-terminal{max-width:600px;transform:none}.project,.project.wide,.project.small{grid-column:span 12}.skill-grid{grid-template-columns:1fr 1fr}.contact{display:block}.contact .hero-cta{margin-top:25px}.view-head{display:block}.view-head p{margin-top:18px}.work-notes{grid-template-columns:1fr}.hero{padding-top:55px}}
-    @media(max-width:520px){.shell{width:min(100% - 26px,1180px)}.topbar{height:62px}.tabs-wrap{top:62px}.nav-hide{display:none}.hero{min-height:auto;padding:70px 0}.hero h1{font-size:56px}.skill-grid{grid-template-columns:1fr}.project-media{height:195px}.signal strong{font-size:18px}.footer{display:block}.footer span{display:block;margin-top:8px}}
-    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gilbran Laureano — Software &amp; AI Engineer</title>
+<meta name="description" content="Gilbran Laureano builds AI video pipelines, production Cloudflare apps, live trading systems, and shipped mobile software. Broadcast producer turned software and AI engineer in Nashville, TN.">
+<meta name="author" content="Gilbran Laureano">
+<link rel="canonical" href="https://gilbran-laureano.pages.dev/">
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="24" fill="%23141210"/><text x="50" y="73" font-family="Georgia,serif" font-size="64" fill="%23d9b878" text-anchor="middle">G</text></svg>'>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Gilbran Laureano — Software &amp; AI Engineer">
+<meta property="og:description" content="AI video pipelines, production Cloudflare apps, live trading systems, and shipped mobile software.">
+<meta property="og:url" content="https://gilbran-laureano.pages.dev/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#faf8f4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e0d0b" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>(function(){document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t){document.documentElement.dataset.theme=t}else if(matchMedia('(prefers-color-scheme:dark)').matches){document.documentElement.dataset.theme='dark'}}catch(e){}})()</script>
+<style>
+/* ============================================================
+   TOKENS
+   Motion follows one system. Custom curves only: the built-in
+   CSS easings are too weak to read as intentional.
+   ============================================================ */
+:root{
+  --bg:#faf8f4; --bg-2:#f2eee6;
+  --panel:#fffefc; --panel-2:#f7f3ec;
+  --text:#141210; --muted:#6d665d; --faint:#948b7f;
+  --line:rgba(20,18,16,.10); --line-2:rgba(20,18,16,.16);
+  --gold:#8f6a26; --gold-lift:#a97f34;
+  --pine:#2f5a4b; --rust:#9a5f2b;
+  --ring:rgba(143,106,38,.38);
+  --shadow-1:0 1px 2px rgba(20,18,16,.05), 0 4px 12px rgba(20,18,16,.05);
+  --shadow-2:0 2px 6px rgba(20,18,16,.06), 0 18px 44px rgba(20,18,16,.10);
+  --shadow-3:0 3px 10px rgba(20,18,16,.07), 0 32px 70px rgba(20,18,16,.13);
+  --display:'Instrument Serif',Georgia,serif;
+  --body:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;
+  --mono:'DM Mono',ui-monospace,SFMono-Regular,monospace;
+  /* Motion */
+  --ease-out:cubic-bezier(.23,1,.32,1);
+  --ease-in-out:cubic-bezier(.77,0,.175,1);
+  --d-press:140ms; --d-quick:180ms; --d-move:240ms; --d-view:280ms;
+}
+[data-theme=dark]{
+  --bg:#0e0d0b; --bg-2:#141210;
+  --panel:#181614; --panel-2:#1f1c18;
+  --text:#f0ebe1; --muted:#a49a8c; --faint:#7d7466;
+  --line:rgba(240,235,225,.11); --line-2:rgba(240,235,225,.18);
+  --gold:#d9b878; --gold-lift:#e6c78d;
+  --pine:#7fae98; --rust:#d59a63;
+  --ring:rgba(217,184,120,.42);
+  --shadow-1:0 1px 2px rgba(0,0,0,.4), 0 4px 12px rgba(0,0,0,.3);
+  --shadow-2:0 2px 6px rgba(0,0,0,.45), 0 18px 44px rgba(0,0,0,.45);
+  --shadow-3:0 3px 10px rgba(0,0,0,.5), 0 32px 70px rgba(0,0,0,.55);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font:400 15.5px/1.65 var(--body);
+  letter-spacing:-.005em;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  transition:background var(--d-move) var(--ease-out), color var(--d-move) var(--ease-out);
+}
+/* Paper grain. Sits under everything, costs nothing. */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background:
+    radial-gradient(1100px 620px at 78% -8%, color-mix(in srgb,var(--gold) 11%,transparent), transparent 62%),
+    radial-gradient(900px 520px at 4% 6%, color-mix(in srgb,var(--pine) 8%,transparent), transparent 60%);
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+::selection{background:color-mix(in srgb,var(--gold) 26%,transparent)}
+.shell{width:min(1140px,calc(100% - 40px));margin-inline:auto;position:relative;z-index:1}
+.mono{font:500 11px/1 var(--mono);letter-spacing:.15em;text-transform:uppercase;color:var(--gold)}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.skip{position:fixed;top:-60px;left:16px;z-index:60;background:var(--panel);border:1px solid var(--line-2);border-radius:10px;padding:11px 16px;font:600 13px var(--body);transition:top var(--d-quick) var(--ease-out)}
+.skip:focus{top:14px}
+
+/* ============================================================
+   FOCUS + PRESS
+   Every pressable thing answers the pointer within 140ms.
+   ============================================================ */
+:where(a,button,[tabindex]):focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:8px}
+.press{transition:transform var(--d-press) var(--ease-out)}
+.press:active{transform:scale(.97)}
+
+/* ============================================================
+   TOPBAR
+   ============================================================ */
+.topbar{
+  position:sticky;top:0;z-index:30;height:66px;
+  border-bottom:1px solid transparent;
+  background:color-mix(in srgb,var(--bg) 72%,transparent);
+  backdrop-filter:blur(16px) saturate(1.6);-webkit-backdrop-filter:blur(16px) saturate(1.6);
+  transition:border-color var(--d-move) var(--ease-out), background var(--d-move) var(--ease-out);
+}
+.topbar[data-stuck=true]{border-bottom-color:var(--line);background:color-mix(in srgb,var(--bg) 88%,transparent)}
+.topbar .shell{display:flex;align-items:center;justify-content:space-between;height:100%}
+.brand{font:400 24px/1 var(--display);letter-spacing:.005em;display:inline-flex;align-items:baseline;gap:1px}
+.brand i{color:var(--gold);font-style:normal}
+.top-actions{display:flex;align-items:center;gap:8px}
+.ghost{
+  display:inline-flex;align-items:center;gap:7px;
+  border:1px solid var(--line);background:color-mix(in srgb,var(--panel) 70%,transparent);
+  color:var(--text);border-radius:999px;padding:8px 14px;cursor:pointer;
+  font:500 12px/1 var(--mono);letter-spacing:.06em;
+  transition:transform var(--d-press) var(--ease-out),border-color var(--d-quick) var(--ease-out),background var(--d-quick) var(--ease-out);
+}
+.ghost:active{transform:scale(.97)}
+.icon{width:36px;height:36px;padding:0;justify-content:center}
+.icon svg{width:15px;height:15px;display:block}
+/* Theme toggle: the sun/moon crossfade, masked by a blur so the
+   eye reads one shape morphing rather than two icons swapping. */
+.theme-swap{position:relative;width:15px;height:15px}
+.theme-swap svg{position:absolute;inset:0;transition:opacity var(--d-quick) var(--ease-out),transform var(--d-move) var(--ease-out),filter var(--d-quick) var(--ease-out)}
+.theme-swap .moon{opacity:0;transform:scale(.8) rotate(-35deg);filter:blur(3px)}
+[data-theme=dark] .theme-swap .sun{opacity:0;transform:scale(.8) rotate(35deg);filter:blur(3px)}
+[data-theme=dark] .theme-swap .moon{opacity:1;transform:none;filter:blur(0)}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{padding:clamp(56px,9vw,104px) 0 clamp(48px,7vw,84px)}
+.hero-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:clamp(36px,6vw,84px);align-items:center}
+.hero h1{
+  font:400 clamp(50px,7.6vw,92px)/.96 var(--display);
+  letter-spacing:-.032em;margin:16px 0 20px;text-wrap:balance;
+}
+.hero h1 em{color:var(--gold);font-style:italic}
+.lede{font-size:clamp(16px,1.45vw,18.5px);line-height:1.62;color:var(--muted);max-width:34em;margin:0}
+.lede b{color:var(--text);font-weight:600}
+.cta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+.btn{
+  display:inline-flex;align-items:center;gap:9px;
+  border:1px solid var(--line-2);background:var(--panel);color:var(--text);
+  border-radius:12px;padding:13px 20px;cursor:pointer;
+  font:600 14px/1 var(--body);letter-spacing:-.01em;
+  box-shadow:var(--shadow-1);
+  transition:transform var(--d-press) var(--ease-out),box-shadow var(--d-move) var(--ease-out),border-color var(--d-quick) var(--ease-out);
+}
+.btn:active{transform:scale(.97)}
+.btn.solid{background:var(--gold);border-color:var(--gold);color:#fffdf8}
+[data-theme=dark] .btn.solid{color:#17130c}
+.btn svg{width:14px;height:14px}
+
+/* Console card. Static content, so it gets depth, not motion. */
+.console{
+  border:1px solid var(--line);border-radius:20px;overflow:hidden;
+  background:linear-gradient(158deg,var(--panel),var(--panel-2));
+  box-shadow:var(--shadow-3);
+  transform:rotate(.55deg);
+  transition:transform var(--d-view) var(--ease-out),box-shadow var(--d-view) var(--ease-out);
+}
+.console-head{display:flex;align-items:center;gap:7px;padding:13px 18px;border-bottom:1px solid var(--line)}
+.console-head b{width:9px;height:9px;border-radius:50%;background:var(--gold);display:block}
+.console-head b:nth-child(2){background:var(--rust)}
+.console-head b:nth-child(3){background:var(--pine)}
+.console-head span{margin-left:auto;font:500 10px/1 var(--mono);letter-spacing:.13em;text-transform:uppercase;color:var(--faint)}
+.console-body{padding:24px 26px 26px}
+.console-body p{margin:0 0 12px;color:var(--muted);font-size:14.5px;line-height:1.72}
+.console-body p:last-of-type{margin-bottom:0}
+.console-body .accent{color:var(--gold)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px;padding-top:18px;border-top:1px solid var(--line)}
+.stats strong{display:block;font:400 30px/1 var(--display);color:var(--text);letter-spacing:-.01em}
+.stats span{display:block;margin-top:5px;font:500 9.5px/1.3 var(--mono);letter-spacing:.11em;text-transform:uppercase;color:var(--faint)}
+.live{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--pine);margin-right:7px;vertical-align:middle;box-shadow:0 0 0 0 color-mix(in srgb,var(--pine) 55%,transparent);animation:beat 2.6s var(--ease-out) infinite}
+@keyframes beat{70%{box-shadow:0 0 0 7px transparent}100%{box-shadow:0 0 0 0 transparent}}
+
+/* ============================================================
+   TABS
+   Two stacked copies of the same row. The active-styled copy is
+   clipped to the selected pill, so the colour change travels with
+   the pill instead of cross-fading per label. Nothing else gets
+   this close to a seamless swap.
+   ============================================================ */
+.tabsbar{
+  position:sticky;top:66px;z-index:20;
+  background:color-mix(in srgb,var(--bg) 86%,transparent);
+  backdrop-filter:blur(16px) saturate(1.6);-webkit-backdrop-filter:blur(16px) saturate(1.6);
+  border-block:1px solid var(--line);
+}
+.tabs{position:relative;padding:11px 0;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs-row{display:flex;gap:4px;width:max-content;min-width:100%}
+.tab{
+  position:relative;white-space:nowrap;border:0;background:none;cursor:pointer;
+  color:var(--muted);padding:9px 16px;border-radius:999px;
+  font:500 14px/1 var(--body);letter-spacing:-.01em;
+  transition:color var(--d-quick) var(--ease-out),transform var(--d-press) var(--ease-out);
+}
+.tab:active{transform:scale(.97)}
+.tab-ghost{
+  position:absolute;inset:11px 0 auto;pointer-events:none;
+  clip-path:inset(0 100% 0 0 round 999px);
+  transition:clip-path var(--d-move) var(--ease-in-out);
+}
+/* The ghost must be a pixel-identical twin of the base row. Any
+   weight change alters glyph widths and the two layers show as
+   doubled text through the clip. Colour is the only difference. */
+.tab-ghost .tab{color:var(--text)}
+.tab-pill{
+  position:absolute;top:11px;height:34px;border-radius:999px;
+  background:color-mix(in srgb,var(--gold) 15%,transparent);
+  border:1px solid color-mix(in srgb,var(--gold) 34%,transparent);
+  pointer-events:none;opacity:0;
+  transition:transform var(--d-move) var(--ease-in-out),width var(--d-move) var(--ease-in-out),opacity var(--d-quick) var(--ease-out);
+}
+.tab-pill[data-ready=true]{opacity:1}
+
+/* ============================================================
+   VIEWS + REVEAL
+   Panels swap on click. Enter only: exits are instant so the new
+   panel never waits on the old one.
+   ============================================================ */
+.view{display:none;padding:clamp(52px,7vw,84px) 0 clamp(72px,9vw,110px)}
+.view.on{display:block}
+/* Reveal is an enhancement, never a gate. Without the .js class
+   (no JS, a crawler, a stalled frame) content is simply visible. */
+.js .reveal{opacity:0;transform:translateY(10px);transition:opacity var(--d-view) var(--ease-out),transform var(--d-view) var(--ease-out)}
+.js .reveal.in{opacity:1;transform:none}
+.view-head{display:flex;justify-content:space-between;align-items:flex-end;gap:34px;margin-bottom:34px;flex-wrap:wrap}
+.view-head h2{font:400 clamp(34px,4.6vw,56px)/1.03 var(--display);letter-spacing:-.026em;margin:12px 0 0;text-wrap:balance}
+.view-head p{margin:0;max-width:40ch;color:var(--muted);font-size:15px}
+
+/* Operating notes strip */
+.notes{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:30px}
+.note{background:var(--panel);padding:17px 19px}
+.note b{display:block;font:500 10px/1 var(--mono);letter-spacing:.11em;text-transform:uppercase;color:var(--gold);margin-bottom:7px}
+.note span{color:var(--muted);font-size:12.8px;line-height:1.55}
+
+/* ============================================================
+   PROJECT CARDS
+   ============================================================ */
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+.card{
+  grid-column:span 6;position:relative;isolation:isolate;
+  background:var(--panel);border:1px solid var(--line);border-radius:20px;overflow:hidden;
+  box-shadow:var(--shadow-1);
+  transition:transform var(--d-move) var(--ease-out),box-shadow var(--d-move) var(--ease-out),border-color var(--d-move) var(--ease-out);
+}
+.card.wide{grid-column:span 8}
+.card.third{grid-column:span 4}
+.card.half{grid-column:span 6}
+@media (hover:hover) and (pointer:fine){
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-2);border-color:color-mix(in srgb,var(--gold) 42%,var(--line))}
+  .card:hover .shot img{transform:scale(1.03)}
+  .ghost:hover{border-color:var(--gold);background:var(--panel)}
+  .btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-2);border-color:var(--gold)}
+  .btn:hover:active{transform:scale(.97)}
+  .tab:hover{color:var(--text)}
+  .console:hover{transform:rotate(0deg) translateY(-4px);box-shadow:var(--shadow-3)}
+  .repo:hover{color:var(--gold)}
+  .repo:hover .arrow{transform:translate(2px,-2px)}
+}
+.shot{height:236px;background:var(--panel-2);overflow:hidden;border-bottom:1px solid var(--line)}
+.shot img{width:100%;height:100%;object-fit:cover;transition:transform 480ms var(--ease-out)}
+.shot.fit{display:grid;place-items:center;padding:16px}
+.shot.fit img{object-fit:contain}
+/* Cards with no screenshot get a typographic plate instead of a
+   stock image. Honest, and it holds the grid. */
+.plate{
+  height:236px;border-bottom:1px solid var(--line);position:relative;overflow:hidden;
+  background:
+    linear-gradient(150deg,color-mix(in srgb,var(--gold) 9%,var(--panel-2)),var(--panel-2) 62%);
+  display:grid;place-items:center;padding:24px;
+}
+.plate::after{
+  content:"";position:absolute;inset:0;opacity:.5;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:34px 34px;
+  -webkit-mask-image:radial-gradient(circle at 50% 45%,#000,transparent 74%);
+  mask-image:radial-gradient(circle at 50% 45%,#000,transparent 74%);
+}
+.plate-inner{position:relative;z-index:1;text-align:center}
+.plate-num{font:400 clamp(38px,5vw,54px)/1 var(--display);color:var(--gold);letter-spacing:-.02em}
+.plate-cap{margin-top:9px;font:500 10px/1.5 var(--mono);letter-spacing:.13em;text-transform:uppercase;color:var(--faint)}
+.card-body{padding:24px 25px 25px}
+.kicker{font:500 10.5px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.card h3{font:400 clamp(25px,2.4vw,31px)/1.08 var(--display);letter-spacing:-.018em;margin:11px 0 9px}
+.card p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.62}
+.detail{border-left:2px solid var(--gold);padding-left:14px;margin-top:16px;font-size:13.2px;line-height:1.6;color:var(--text)}
+.detail b{color:var(--gold);font-weight:600}
+.card-foot{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:20px;flex-wrap:wrap}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{border:1px solid var(--line);border-radius:999px;padding:4px 9px;color:var(--muted);font:400 10.5px/1.5 var(--mono)}
+.repo{
+  display:inline-flex;align-items:center;gap:5px;white-space:nowrap;
+  color:var(--pine);font:500 12px/1 var(--mono);
+  transition:color var(--d-quick) var(--ease-out);
+}
+.arrow{display:inline-block;transition:transform var(--d-quick) var(--ease-out)}
+.private{color:var(--faint);font:400 11.5px/1 var(--mono);white-space:nowrap;display:inline-flex;align-items:center;gap:6px}
+.private::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--faint)}
+
+/* ============================================================
+   APPROACH / STACK / CONTACT
+   ============================================================ */
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(34px,5vw,60px);align-items:start}
+.split h3{font:400 clamp(28px,3.2vw,38px)/1.1 var(--display);letter-spacing:-.022em;margin:0 0 18px;text-wrap:balance}
+.split p{font-size:16.5px;line-height:1.68;color:var(--muted);margin:0 0 16px}
+.split p:last-child{margin-bottom:0}
+.principles{display:grid;gap:11px}
+.principle{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:18px 20px;box-shadow:var(--shadow-1);transition:transform var(--d-move) var(--ease-out),border-color var(--d-move) var(--ease-out)}
+@media (hover:hover) and (pointer:fine){.principle:hover{transform:translateX(3px);border-color:color-mix(in srgb,var(--gold) 40%,var(--line))}}
+.principle b{display:block;color:var(--gold);font-size:14px;font-weight:600;margin-bottom:4px}
+.principle span{color:var(--muted);font-size:13.4px;line-height:1.58}
+.stack-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.cell{border:1px solid var(--line);background:var(--panel);border-radius:16px;padding:22px 23px;box-shadow:var(--shadow-1);transition:transform var(--d-move) var(--ease-out),border-color var(--d-move) var(--ease-out)}
+@media (hover:hover) and (pointer:fine){.cell:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--gold) 40%,var(--line))}}
+.cell b{display:block;font:500 10.5px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:11px}
+.cell p{margin:0;color:var(--muted);font-size:14px;line-height:1.66}
+.contact{
+  background:linear-gradient(142deg,var(--panel),var(--panel-2));
+  border:1px solid var(--line);border-radius:22px;
+  padding:clamp(30px,6vw,68px);
+  display:flex;justify-content:space-between;align-items:flex-end;gap:34px;flex-wrap:wrap;
+  box-shadow:var(--shadow-2);
+}
+.contact h2{font:400 clamp(34px,5.2vw,64px)/1 var(--display);letter-spacing:-.026em;margin:12px 0 14px;text-wrap:balance}
+.contact p{color:var(--muted);max-width:44ch;margin:0;font-size:15.5px;line-height:1.62}
+.footer{border-top:1px solid var(--line);margin-top:20px;padding:26px 0 40px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--faint);font:400 11px/1.6 var(--mono)}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media(max-width:900px){
+  .hero-grid,.split{grid-template-columns:1fr}
+  .console{transform:none;max-width:560px}
+  .card,.card.wide,.card.third,.card.half{grid-column:span 12}
+  .stack-grid{grid-template-columns:1fr 1fr}
+  .notes{grid-template-columns:1fr}
+  .view-head{align-items:flex-start}
+}
+@media(max-width:560px){
+  .shell{width:calc(100% - 28px)}
+  .topbar{height:60px}.tabsbar{top:60px}
+  .hide-sm{display:none}
+  .hero{padding-top:44px}
+  .hero h1{font-size:clamp(42px,12vw,58px)}
+  .stack-grid{grid-template-columns:1fr}
+  .shot,.plate{height:196px}
+  .stats strong{font-size:24px}
+  .contact{display:block}
+  .contact .cta-row{margin-top:26px}
+  .footer{display:block}
+  .footer span{display:block;margin-top:8px}
+}
+
+/* ============================================================
+   REDUCED MOTION
+   Fewer and gentler, not zero. Opacity still carries meaning,
+   so it stays. Everything positional goes.
+   ============================================================ */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}
+  .reveal{transform:none;transition:opacity var(--d-move) var(--ease-out)}
+  .card:hover,.principle:hover,.cell:hover,.btn:hover,.console:hover{transform:none}
+  .card:hover .shot img{transform:none}
+  .press:active,.btn:active,.tab:active,.ghost:active{transform:none}
+  .tab-ghost,.tab-pill{transition:opacity var(--d-quick) var(--ease-out)}
+  .live{animation:none}
+}
+</style>
 </head>
 <body>
-  <nav class="topbar"><div class="shell"><div class="brand">Gilbran Laureano<span class="brand i">.</span></div><div class="top-actions"><a class="link-btn nav-hide" href="https://github.com/Gibbywithag" target="_blank" rel="noopener">GitHub ↗</a><button class="icon-btn" id="theme" aria-label="Toggle theme">◐</button></div></div></nav>
-  <main>
-    <header class="hero shell"><div class="hero-grid"><div><div class="mono">Broadcast producer → software & AI engineer · Nashville, TN</div><h1>A builder with an <span>unusual edge.</span></h1><p class="hero-copy">I turn real problems into shipped products — <strong>AI video pipelines, intelligent desktop apps, full-stack dashboards, and mobile software</strong> that people can actually use.</p><div class="hero-cta"><button class="btn primary" data-go="work">Explore the work ↓</button><a class="btn" href="mailto:gilbranlaureano0417@gmail.com">Start a conversation ↗</a></div></div><div class="hero-terminal"><div class="terminal-head"><span><b></b> currently building</span></div><div class="terminal-body"><div class="cyan">A little context</div><p>I produce broadcast video for Metro Nashville by day. Nights and weekends, I build the AI tools I wish existed for media work.</p><p class="green">The pattern is simple: notice friction, build the thing, ship it.</p><div class="signal"><div><strong>06+</strong><span>products shipped</span></div><div><strong>3</strong><span>AI pipelines</span></div><div><strong>∞</strong><span>curiosity</span></div></div></div></div></div></header>
-    <div class="tabs-wrap"><div class="shell tabs" role="tablist"><button class="tab active" data-tab="work">Selected work</button><button class="tab" data-tab="about">How I build</button><button class="tab" data-tab="skills">Stack</button><button class="tab" data-tab="contact">Contact</button></div></div>
-    <section class="view active" id="work"><div class="shell"><div class="view-head"><div><div class="mono">01 / Proof of work</div><h2>Built under<br>real constraints.</h2></div><p>Work that has to serve an operator, survive a deadline, or earn a place on someone’s device — not just look convincing in a demo.</p></div><div class="work-notes" aria-label="Builder principles"><div class="work-note"><b><span class="pulse"></span>Broadcast pace</b><span>Production instincts: clear next actions, no mystery states, and useful failure modes.</span></div><div class="work-note"><b>AI with a job</b><span>Models sit inside workflows with input, review, recovery, and an actual outcome.</span></div><div class="work-note"><b>Whole product thinking</b><span>Interface, backend, deployment, and the annoying details that make a tool dependable.</span></div></div><div class="feature-grid">
-      <article class="project wide"><div class="project-media"><img src="assets/sermon-clipper-workspace.jpg" alt="Actual Sermon Clipper workspace with sermon upload and Generate Clips action" loading="eager" decoding="async"></div><div class="project-body"><div class="project-kicker">AI video · desktop · computer vision</div><h3>SermonNoteClipper</h3><p>Long-form sermon video in. Ready-to-post vertical clips out. A production pipeline chains scene detection, YOLO subject tracking, Whisper transcription, Gemini moment selection, reframing, captions, and export.</p><div class="case-note"><b>The interesting part:</b> packaging heavy ML into a calm workflow that non-technical media teams can use.</div><div class="project-foot"><div class="chips"><span class="chip">Python</span><span class="chip">YOLO</span><span class="chip">Whisper</span><span class="chip">Gemini</span></div><a class="repo" href="https://github.com/Gibbywithag/SermonNoteClipper" target="_blank" rel="noopener">public repo ↗</a></div></div></article>
-      <article class="project small"><div class="project-media contain"><img src="assets/kalshi-risk.jpg" alt="Kalshi quant bot risk dashboard"></div><div class="project-body"><div class="project-kicker">Fintech · data · live systems</div><h3>Kalshi Quant Stack</h3><p>Research-grade validation, live execution, risk coordination, and monitoring for automated prediction-market strategies.</p><div class="project-foot"><div class="chips"><span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">React</span></div><a class="repo" href="https://github.com/Gibbywithag" target="_blank" rel="noopener">GitHub ↗</a></div></div></article>
-      <article class="project small"><div class="project-media"><img src="assets/cutback-dashboard.jpg" alt="Cutback’s live first-run dashboard with calorie and macro targets" loading="lazy" decoding="async"></div><div class="project-body"><div class="project-kicker">Offline-first PWA · personal systems</div><h3>Cutback</h3><p>A private, single-user health system that keeps food, weight, habits, check-ins, and coaching inside one calm daily loop — no account required.</p><div class="project-foot"><div class="chips"><span class="chip">React</span><span class="chip">PWA</span><span class="chip">Cloudflare</span></div><a class="repo" href="https://cutback.pages.dev/" target="_blank" rel="noopener">live app ↗</a></div></div></article>
-      <article class="project"><div class="project-media"><img src="assets/mnn-clip-namer-real.jpg" alt="MNN Clip Namer interface showing AI-assisted video clip review and naming"></div><div class="project-body"><div class="project-kicker">Public · cross-platform desktop</div><h3>MNN Clip Namer</h3><p>Drag in a clip, get a useful filename. Electron sends keyframes through a Cloudflare Worker to GPT-4o-mini Vision. No account, API key, or setup for the end user.</p><div class="case-note"><b>Product detail:</b> retry logic, confidence badges, undo history, CSV export, and atomic rename behavior.</div><div class="project-foot"><div class="chips"><span class="chip">Electron</span><span class="chip">TypeScript</span><span class="chip">OpenAI</span></div><a class="repo" href="https://github.com/Gibbywithag/mnn-clip-namer" target="_blank" rel="noopener">public repo ↗</a></div></div></article>
-      <article class="project"><div class="project-media"><img src="assets/pagetrail-app-store.jpg" alt="PageTrail App Store screenshots showing story creation, reader, and Trail Log"></div><div class="project-body"><div class="project-kicker">Mobile · App Store</div><h3>PageTrail</h3><p>A native SwiftUI reading app that generates grade-tuned children's stories, with StoreKit 2 subscriptions and a Cloudflare Workers backend.</p><div class="project-foot"><div class="chips"><span class="chip">SwiftUI</span><span class="chip">StoreKit 2</span><span class="chip">LLM</span></div><a class="repo" href="https://apps.apple.com/us/app/page-trail/id6760310383" target="_blank" rel="noopener">App Store ↗</a></div></div></article>
-      <article class="project"><div class="project-media"><img src="assets/southeast-autoweb-real.jpg" alt="SouthEast AutoWeb homepage for Southeast Auto Paint and Equipment"></div><div class="project-body"><div class="project-kicker">Client work · web</div><h3>SouthEast AutoWeb</h3><p>A real client-facing web presence for an automotive paint and equipment business — clear service storytelling, conversion-focused layout, and production-ready frontend work.</p><div class="project-foot"><div class="chips"><span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">Web</span></div><a class="repo" href="https://github.com/Gibbywithag/SouthEast-AutoWeb" target="_blank" rel="noopener">public repo ↗</a></div></div></article>
-      <article class="project"><div class="project-media"><img src="assets/mnn-broll-library.jpg" alt="MNN B-Roll Library’s actual search interface for the Metro Nashville footage archive" loading="lazy" decoding="async"></div><div class="project-body"><div class="project-kicker">Internal tooling · broadcast workflows</div><h3>MNN B-Roll Library</h3><p>A local-first footage library that turns a mapped archive into searchable, previewable b-roll — built for editors who need the right shot quickly.</p><div class="case-note"><b>Operator detail:</b> search, hover previews, filters, and one-click file-location jump remove the hunt from production prep.</div><div class="project-foot"><div class="chips"><span class="chip">Python</span><span class="chip">Flask</span><span class="chip">SQLite</span><span class="chip">FFmpeg</span></div><a class="repo" href="https://github.com/Gibbywithag/MNN-B-ROLL-EDITOR" target="_blank" rel="noopener">public repo ↗</a></div></div></article>
-    </div></div></section>
-    <section class="view" id="about"><div class="shell"><div class="view-head"><div><div class="mono">02 / Operating system</div><h2>Curious enough to<br>go all the way down.</h2></div><p>I learn by building at the edge of my current ability — then I keep going until the thing works for someone besides me.</p></div><div class="about-grid"><div><h3>From broadcast rooms to production software.</h3><p>By day, I produce broadcast video for Metro Nashville. That gives me a useful bias: I notice friction, I care about the operator, and I know the difference between an impressive prototype and a tool that survives contact with a deadline.</p><p>That mindset shows up in everything I make — APIs with failure modes, UIs with a clear next action, and systems that can run unattended without pretending the hard parts don't exist.</p></div><div class="principles"><div class="principle"><b>Start with the pain</b><span>The best product spec is often a repeated annoyance.</span></div><div class="principle"><b>Make the magic legible</b><span>AI should feel capable, not mysterious or fragile.</span></div><div class="principle"><b>Ship the whole loop</b><span>Build, deploy, monitor, learn, improve.</span></div><div class="principle"><b>Keep learning in public</b><span>Every build is a new instrument in the toolkit.</span></div></div></div></div></section>
-    <section class="view" id="skills"><div class="shell"><div class="view-head"><div><div class="mono">03 / The toolkit</div><h2>Tools are only<br>interesting in motion.</h2></div><p>A practical stack shaped by the products above — from model integration to shipped clients and production services.</p></div><div class="skill-grid"><div class="skill"><b>Build</b><p>Python · TypeScript · JavaScript · Swift · SQL · Shell</p></div><div class="skill"><b>Interfaces</b><p>React · Next.js · Vite · Tailwind · SwiftUI · Electron</p></div><div class="skill"><b>Systems</b><p>FastAPI · Node.js · Cloudflare Workers · Docker · Vercel</p></div><div class="skill"><b>AI / ML</b><p>OpenAI · Gemini · YOLO · PySceneDetect · Whisper · PyTorch</p></div><div class="skill"><b>Data</b><p>pandas · Chart.js · real-time dashboards · backtesting · validation</p></div><div class="skill"><b>Ship</b><p>GitHub · CI/CD · App Store deployment · Tailscale · macOS automation</p></div></div></div></section>
-    <section class="view" id="contact"><div class="shell"><div class="contact"><div><div class="mono">04 / Your move</div><h2>Let's build<br>something useful.</h2><p>Open to remote software, AI engineering, and product-minded builder roles. If the problem is real and the team cares about the details, I want to hear about it.</p></div><div class="hero-cta"><a class="btn primary" href="mailto:gilbranlaureano0417@gmail.com">Email Gil ↗</a><a class="btn" href="https://www.linkedin.com/in/gilbran-laureano-372a29189/" target="_blank" rel="noopener">LinkedIn ↗</a><a class="btn" href="https://github.com/Gibbywithag" target="_blank" rel="noopener">GitHub ↗</a></div></div></div></section>
-  </main>
-  <footer class="shell footer"><span>© 2026 Gilbran Laureano · Nashville, TN</span><span>Built from scratch · designed for people who like to see the work</span></footer>
-  <script>
-    const tabs=[...document.querySelectorAll('.tab')],views=[...document.querySelectorAll('.view')];
-    function show(id){tabs.forEach(t=>t.classList.toggle('active',t.dataset.tab===id));views.forEach(v=>v.classList.toggle('active',v.id===id));history.replaceState(null,'','#'+id);window.scrollTo({top:document.querySelector('.tabs-wrap').offsetTop-135,behavior:'smooth'})}
-    tabs.forEach(t=>t.addEventListener('click',()=>show(t.dataset.tab)));document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>show(b.dataset.go)));
-    if(location.hash&&document.getElementById(location.hash.slice(1))){const initialTab=location.hash.slice(1);window.addEventListener('load',()=>show(initialTab),{once:true});}
-    document.getElementById('theme').addEventListener('click',()=>{const next=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=next;localStorage.setItem('theme',next)});
-  </script>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar" id="topbar">
+  <div class="shell">
+    <a class="brand press" href="#" aria-label="Gilbran Laureano, home">Gilbran Laureano<i>.</i></a>
+    <nav class="top-actions" aria-label="Quick links">
+      <a class="ghost hide-sm" href="https://github.com/Gibbywithag" target="_blank" rel="noopener">GitHub <span class="arrow" aria-hidden="true">&#8599;</span></a>
+      <a class="ghost hide-sm" href="mailto:gilbranlaureano0417@gmail.com">Email</a>
+      <button class="ghost icon" id="theme" type="button" aria-label="Switch colour theme">
+        <span class="theme-swap" aria-hidden="true">
+          <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.4M12 19.6V22M2 12h2.4M19.6 12H22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg>
+          <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.4A8.5 8.5 0 1 1 9.6 3.5a6.8 6.8 0 0 0 10.9 10.9Z"/></svg>
+        </span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero">
+  <div class="shell">
+    <div class="hero-grid">
+      <div>
+        <p class="mono reveal">Broadcast producer &#8594; software &amp; AI engineer &#183; Nashville, TN</p>
+        <h1 class="reveal">A builder with an <em>unusual edge.</em></h1>
+        <p class="lede reveal">I turn real problems into products that ship. <b>AI video pipelines, production Cloudflare apps, live trading systems, and mobile software</b> that people actually use, built at broadcast pace and maintained after launch.</p>
+        <div class="cta-row reveal">
+          <button class="btn solid" type="button" data-go="work">See the work <span aria-hidden="true">&#8595;</span></button>
+          <a class="btn" href="mailto:gilbranlaureano0417@gmail.com">Start a conversation <span class="arrow" aria-hidden="true">&#8599;</span></a>
+        </div>
+      </div>
+      <aside class="console reveal">
+        <div class="console-head"><b></b><b></b><b></b><span>currently building</span></div>
+        <div class="console-body">
+          <p>I produce broadcast video for Metro Nashville by day. Nights and weekends I build the AI tools I wish existed for media work.</p>
+          <p class="accent">The pattern is simple: notice friction, build the thing, ship it, then keep it running.</p>
+          <div class="stats">
+            <div><strong>08+</strong><span>Products shipped</span></div>
+            <div><strong>04</strong><span>AI pipelines</span></div>
+            <div><strong><span class="live"></span>05</strong><span>Live in prod</span></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<div class="tabsbar">
+  <div class="shell">
+    <div class="tabs" id="tabs">
+      <div class="tabs-row" role="tablist" aria-label="Sections">
+        <button class="tab" role="tab" data-tab="work" id="tab-work" aria-controls="work" aria-selected="true">Selected work</button>
+        <button class="tab" role="tab" data-tab="approach" id="tab-approach" aria-controls="approach" aria-selected="false">How I build</button>
+        <button class="tab" role="tab" data-tab="stack" id="tab-stack" aria-controls="stack" aria-selected="false">Stack</button>
+        <button class="tab" role="tab" data-tab="contact" id="tab-contact" aria-controls="contact" aria-selected="false">Contact</button>
+      </div>
+      <div class="tab-pill" id="pill" aria-hidden="true"></div>
+      <div class="tabs-row tab-ghost" id="ghost" aria-hidden="true">
+        <button class="tab" tabindex="-1">Selected work</button>
+        <button class="tab" tabindex="-1">How I build</button>
+        <button class="tab" tabindex="-1">Stack</button>
+        <button class="tab" tabindex="-1">Contact</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="view on" id="work" role="tabpanel" aria-labelledby="tab-work">
+  <div class="shell">
+    <div class="view-head reveal">
+      <div><span class="mono">01 / Proof of work</span><h2>Built under real constraints.</h2></div>
+      <p>Work that has to serve an operator, survive a deadline, or earn a place on someone's device. Not just look convincing in a demo.</p>
+    </div>
+
+    <div class="notes reveal">
+      <div class="note"><b>Broadcast pace</b><span>Production instincts: clear next actions, no mystery states, and useful failure modes.</span></div>
+      <div class="note"><b>AI with a job</b><span>Models sit inside workflows with input, review, recovery, and an actual outcome.</span></div>
+      <div class="note"><b>Whole product thinking</b><span>Interface, backend, deployment, and the annoying details that make a tool dependable.</span></div>
+    </div>
+
+    <div class="grid">
+
+      <article class="card wide reveal">
+        <div class="shot"><img src="assets/myla-history.jpg" alt="Family Ops Dashboard history view: day selector, daily totals for feeds, diapers and sleep, and a 24 hour timeline" loading="eager" decoding="async" width="1300" height="700"></div>
+        <div class="card-body">
+          <div class="kicker">Production web app &#183; Cloudflare</div>
+          <h3>Family Ops Dashboard</h3>
+          <p>A private household dashboard that two people depend on every day. Next.js 16 compiles to a single Cloudflare Worker, with D1 and Drizzle for data, R2 for media, and passkey authentication so there is no password to leak or reset. A companion Worker polls an Owlet sock on a Durable Object alarm loop and surfaces honest failure states instead of pretending the sensor is fine.</p>
+          <div class="detail"><b>The discipline:</b> 102 tests have to pass before any commit lands. This is the piece of my work that behaves most like real production software, because two people notice within minutes when it breaks.</div>
+          <div class="card-foot">
+            <div class="chips"><span class="chip">Next.js 16</span><span class="chip">Cloudflare Workers</span><span class="chip">D1 + Drizzle</span><span class="chip">R2</span><span class="chip">Passkeys</span></div>
+            <a class="repo" href="https://github.com/Gibbywithag/family-ops-dashboard" target="_blank" rel="noopener">Public repo <span class="arrow" aria-hidden="true">&#8599;</span></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card third reveal">
+        <div class="shot"><img src="assets/prediction-radar.jpg" alt="Terminal showing the Prediction Radar track record: 1320 resolved bets, 38 percent wins, plus 16.3 percent average ROI" loading="lazy" decoding="async" width="1040" height="640"></div>
+        <div class="card-body">
+          <div class="kicker">Data &#183; signals &#183; always on</div>
+          <h3>Prediction Radar</h3>
+          <p>Watches Polymarket whale wallets and Kalshi exchange activity, scores every signal, and pushes only the strongest to Discord and to AI gated iMessage alerts. Runs unattended under launchd and writes its own results to SQLite.</p>
+          <div class="detail"><b>The honest part:</b> it grades itself. 1,320 resolved positions at <b>+16.3% average ROI</b> on a 38% hit rate, recorded automatically as each market settles. The number can go down, which is the point.</div>
+          <div class="card-foot">
+            <div class="chips"><span class="chip">Python</span><span class="chip">SQLite</span><span class="chip">launchd</span></div>
+            <a class="repo" href="https://github.com/Gibbywithag/prediction-radar" target="_blank" rel="noopener">Public repo <span class="arrow" aria-hidden="true">&#8599;</span></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card wide reveal">
+        <div class="shot"><img src="assets/sermon-clipper-workspace.jpg" alt="Sermon Note Clipper workspace showing a sermon upload and the Generate Clips action" loading="lazy" decoding="async" width="1200" height="700"></div>
+        <div class="card-body">
+          <div class="kicker">AI video &#183; desktop &#183; computer vision</div>
+          <h3>SermonNoteClipper</h3>
+          <p>Long form sermon video in, ready to post vertical clips out. One pipeline chains scene detection, YOLO subject tracking, Whisper transcription, Gemini moment selection, reframing, captions, and export.</p>
+          <div class="detail"><b>The interesting part:</b> packaging heavy ML into a calm workflow that a non technical media team can run without help.</div>
+          <div class="card-foot">
+            <div class="chips"><span class="chip">Python</span><span class="chip">YOLO</span><span class="chip">Whisper</span><span class="chip">Gemini</span></div>
+            <a class="repo" href="https://github.com/Gibbywithag/SermonNoteClipper" target="_blank" rel="noopener">Public repo <span class="arrow" aria-hidden="true">&#8599;</span></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card third reveal">
+        <div class="shot fit"><img src="assets/kalshi-risk.jpg" alt="Kalshi trading bot risk dashboard" loading="lazy" decoding="async" width="900" height="700"></div>
+        <div class="card-body">
+          <div class="kicker">Fintech &#183; live systems</div>
+          <h3>Kalshi Quant Stack</h3>
+          <p>Backtesting and walk forward validation, live execution, position level risk coordination, and a monitoring dashboard for automated prediction market strategies. Built to be shut off safely as much as to be run.</p>
+          <div class="card-foot">
+            <div class="chips"><span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">React</span></div>
+            <span class="private">Private repo</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card half reveal">
+        <div class="shot"><img src="assets/pagetrail-app-store.jpg" alt="PageTrail App Store screenshots showing story creation, the reader, and the Trail Log" loading="lazy" decoding="async" width="1200" height="800"></div>
+        <div class="card-body">
+          <div class="kicker">Mobile &#183; shipped to the App Store</div>
+          <h3>PageTrail</h3>
+          <p>A native SwiftUI reading app that generates children's stories tuned to a chosen reading level, backed by Cloudflare Workers. Shipped through App Store review with StoreKit 2 subscriptions, receipt validation, and restore flows that survive a reinstall.</p>
+          <div class="card-foot">
+            <div class="chips"><span class="chip">SwiftUI</span><span class="chip">StoreKit 2</span><span class="chip">LLM</span></div>
+            <a class="repo" href="https://apps.apple.com/us/app/page-trail/id6760310383" target="_blank" rel="noopener">App Store <span class="arrow" aria-hidden="true">&#8599;</span></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card half reveal">
+        <div class="shot"><img src="assets/mnn-clip-namer-real.jpg" alt="MNN Clip Namer interface showing AI assisted video clip review and naming" loading="lazy" decoding="async" width="1200" height="800"></div>
+        <div class="card-body">
+          <div class="kicker">Public &#183; cross platform desktop</div>
+          <h3>MNN Clip Namer</h3>
+          <p>Drag in a clip, get a useful filename. Electron sends keyframes through a Cloudflare Worker to GPT&#8209;4o&#8209;mini Vision, so the end user needs no account, no API key, and no setup.</p>
+          <div class="detail"><b>Product detail:</b> retry with backoff, confidence badges on every guess, undo history, CSV export, and atomic renames so a crash mid batch never leaves half named files.</div>
+          <div class="card-foot">
+            <div class="chips"><span class="chip">Electron</span><span class="chip">TypeScript</span><span class="chip">OpenAI</span></div>
+            <a class="repo" href="https://github.com/Gibbywithag/mnn-clip-namer" target="_blank" rel="noopener">Public repo <span class="arrow" aria-hidden="true">&#8599;</span></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card third reveal">
+        <div class="shot"><img src="assets/cutback-dashboard.jpg" alt="Cutback dashboard showing calorie and macro targets" loading="lazy" decoding="async" width="900" height="700"></div>
+        <div class="card-body">
+          <div class="kicker">Offline first PWA</div>
+          <h3>Cutback</h3>
+          <p>Food, weight, habits, and check ins inside one calm daily loop. Offline first, so a logged meal on a dead subway connection is still there later. No account required and no data leaves the device unless you ask.</p>
+          <div class="card-foot">
+            <div class="chips"><span class="chip">React</span><span class="chip">PWA</span><span class="chip">Cloudflare</span></div>
+            <a class="repo" href="https://cutback.pages.dev/" target="_blank" rel="noopener">Live app <span class="arrow" aria-hidden="true">&#8599;</span></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card third reveal">
+        <div class="shot"><img src="assets/mnn-broll-library.jpg" alt="MNN B-Roll Library search interface for a broadcast footage archive" loading="lazy" decoding="async" width="900" height="700"></div>
+        <div class="card-body">
+          <div class="kicker">Internal tooling &#183; broadcast</div>
+          <h3>MNN B&#8209;Roll Library</h3>
+          <p>Turns a mapped broadcast archive into a searchable, previewable b&#8209;roll library. Editors stop scrubbing folders and start finding shots: filters, hover previews, and one click to reveal the file on disk.</p>
+          <div class="card-foot">
+            <div class="chips"><span class="chip">Python</span><span class="chip">Flask</span><span class="chip">FFmpeg</span></div>
+            <span class="private">Internal tool</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card third reveal">
+        <div class="shot"><img src="assets/southeast-autoweb-real.jpg" alt="SouthEast AutoWeb homepage for an automotive paint and equipment business" loading="lazy" decoding="async" width="900" height="700"></div>
+        <div class="card-body">
+          <div class="kicker">Client work &#183; web</div>
+          <h3>SouthEast AutoWeb</h3>
+          <p>A client facing site for an automotive paint and equipment business. Built to the brief, handed over, and running: clear service storytelling, a conversion focused layout, and a stack the owner is not locked out of.</p>
+          <div class="card-foot">
+            <div class="chips"><span class="chip">React</span><span class="chip">TypeScript</span></div>
+            <a class="repo" href="https://github.com/Gibbywithag/SouthEast-AutoWeb" target="_blank" rel="noopener">Public repo <span class="arrow" aria-hidden="true">&#8599;</span></a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="view" id="approach" role="tabpanel" aria-labelledby="tab-approach" hidden>
+  <div class="shell">
+    <div class="view-head reveal">
+      <div><span class="mono">02 / Operating system</span><h2>Curious enough to go all the way down.</h2></div>
+      <p>I learn by building at the edge of what I can currently do, then keep going until the thing works for someone besides me.</p>
+    </div>
+    <div class="split">
+      <div class="reveal">
+        <h3>From broadcast rooms to production software.</h3>
+        <p>By day I produce broadcast video for Metro Nashville. I build and own the AI tooling my team uses, which gives me a useful bias: I notice friction, I care about the operator, and I know the difference between an impressive prototype and a tool that survives contact with a deadline.</p>
+        <p>That shows up in everything I make. APIs with real failure modes, interfaces with a clear next action, and systems that run unattended without pretending the hard parts do not exist.</p>
+      </div>
+      <div class="principles">
+        <div class="principle reveal"><b>Start with the pain</b><span>The best product spec is usually a repeated annoyance.</span></div>
+        <div class="principle reveal"><b>Make the magic legible</b><span>AI should feel capable, never mysterious or fragile.</span></div>
+        <div class="principle reveal"><b>Ship the whole loop</b><span>Build, deploy, monitor, learn, improve.</span></div>
+        <div class="principle reveal"><b>Keep learning in public</b><span>Every build adds an instrument to the toolkit.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="view" id="stack" role="tabpanel" aria-labelledby="tab-stack" hidden>
+  <div class="shell">
+    <div class="view-head reveal">
+      <div><span class="mono">03 / The toolkit</span><h2>Tools are only interesting in motion.</h2></div>
+      <p>A practical stack shaped by the products above, from model integration through to shipped clients and production services.</p>
+    </div>
+    <div class="stack-grid">
+      <div class="cell reveal"><b>Build</b><p>Python &#183; TypeScript &#183; JavaScript &#183; Swift &#183; SQL &#183; Shell</p></div>
+      <div class="cell reveal"><b>Interfaces</b><p>React &#183; Next.js &#183; Vite &#183; Tailwind &#183; SwiftUI &#183; Electron</p></div>
+      <div class="cell reveal"><b>Systems</b><p>FastAPI &#183; Node.js &#183; Cloudflare Workers &#183; D1 &#183; R2 &#183; Docker</p></div>
+      <div class="cell reveal"><b>AI and ML</b><p>OpenAI &#183; Gemini &#183; Claude &#183; YOLO &#183; Whisper &#183; PySceneDetect</p></div>
+      <div class="cell reveal"><b>Data</b><p>SQLite &#183; Drizzle &#183; pandas &#183; real time dashboards &#183; backtesting</p></div>
+      <div class="cell reveal"><b>Ship</b><p>GitHub &#183; CI/CD &#183; App Store releases &#183; launchd &#183; Tailscale</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="view" id="contact" role="tabpanel" aria-labelledby="tab-contact" hidden>
+  <div class="shell">
+    <div class="contact reveal">
+      <div>
+        <span class="mono">04 / Your move</span>
+        <h2>Let's build something useful.</h2>
+        <p>Open to remote software and AI engineering roles. If the problem is real and the team cares about the details, I want to hear about it.</p>
+      </div>
+      <div class="cta-row">
+        <a class="btn solid" href="mailto:gilbranlaureano0417@gmail.com">Email Gil <span class="arrow" aria-hidden="true">&#8599;</span></a>
+        <a class="btn" href="https://www.linkedin.com/in/gilbran-laureano-372a29189/" target="_blank" rel="noopener">LinkedIn <span class="arrow" aria-hidden="true">&#8599;</span></a>
+        <a class="btn" href="https://github.com/Gibbywithag" target="_blank" rel="noopener">GitHub <span class="arrow" aria-hidden="true">&#8599;</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer-wrap"><div class="shell"><div class="footer">
+  <span>&#169; 2026 Gilbran Laureano &#183; Nashville, TN</span>
+  <span>Built from scratch &#183; designed for people who like to see the work</span>
+</div></div></footer>
+
+<script>
+(function(){
+  'use strict';
+  var LOG = '[portfolio]';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  /* ---------- Theme ---------- */
+  function initTheme(){
+    var btn = document.getElementById('theme');
+    if(!btn){ console.warn(LOG, 'theme toggle missing, skipping theme init'); return; }
+    btn.addEventListener('click', function(){
+      var next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = next;
+      try{
+        localStorage.setItem('theme', next);
+      }catch(err){
+        console.warn(LOG, 'could not persist theme to localStorage. value:', next, 'error:', err);
+      }
+    });
+  }
+
+  /* ---------- Reveal ----------
+     Elements fade up once as they enter. Stagger stays short so the
+     grid never feels like it is waiting on itself. */
+  function revealIn(scope){
+    var items = (scope || document).querySelectorAll('.reveal');
+    Array.prototype.forEach.call(items, function(el, i){
+      var delay = Math.min(i, 8) * 45;
+      setTimeout(function(){ el.classList.add('in'); }, delay);
+    });
+  }
+  function initReveal(){
+    if(!('IntersectionObserver' in window)){
+      console.warn(LOG, 'IntersectionObserver unavailable, revealing all content immediately');
+      Array.prototype.forEach.call(document.querySelectorAll('.reveal'), function(el){ el.classList.add('in'); });
+      return null;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(!entry.isIntersecting) return;
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+    Array.prototype.forEach.call(document.querySelectorAll('.reveal'), function(el){ io.observe(el); });
+    return io;
+  }
+
+  /* ---------- Tabs ----------
+     The ghost row carries the active styling and is clipped to the
+     selected tab, so the colour travels with the pill instead of
+     each label cross-fading on its own. */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab[data-tab]'));
+  var views = Array.prototype.slice.call(document.querySelectorAll('.view'));
+  var ghost = document.getElementById('ghost');
+  var pill  = document.getElementById('pill');
+  var current = 'work';
+
+  function paintIndicator(id){
+    if(!ghost || !pill) return;
+    var i = tabs.findIndex(function(t){ return t.dataset.tab === id; });
+    if(i < 0){ console.warn(LOG, 'paintIndicator called with unknown tab id:', id); return; }
+    var btn = tabs[i];
+    var rowLeft = btn.parentElement.getBoundingClientRect().left;
+    var r = btn.getBoundingClientRect();
+    var left = r.left - rowLeft;
+    var right = left + r.width;
+    var total = btn.parentElement.getBoundingClientRect().width;
+    ghost.style.clipPath = 'inset(0 ' + Math.max(total - right, 0) + 'px 0 ' + Math.max(left, 0) + 'px round 999px)';
+    pill.style.width = r.width + 'px';
+    pill.style.transform = 'translateX(' + left + 'px)';
+    pill.dataset.ready = 'true';
+  }
+
+  function show(id, opts){
+    var target = document.getElementById(id);
+    if(!target){ console.error(LOG, 'show() got an id with no matching panel:', id); return; }
+    current = id;
+    tabs.forEach(function(t){
+      var on = t.dataset.tab === id;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    views.forEach(function(v){
+      var on = v.id === id;
+      v.classList.toggle('on', on);
+      if(on){ v.removeAttribute('hidden'); } else { v.setAttribute('hidden',''); }
+    });
+    paintIndicator(id);
+    revealIn(target);
+    try{ history.replaceState(null, '', '#' + id); }
+    catch(err){ console.warn(LOG, 'history.replaceState failed for', id, err); }
+    if(opts && opts.scroll){
+      var bar = document.querySelector('.tabsbar');
+      if(bar){
+        var top = window.scrollY + bar.getBoundingClientRect().top - 66;
+        window.scrollTo({ top: top, behavior: reduce.matches ? 'auto' : 'smooth' });
+      }
+    }
+  }
+
+  function initTabs(){
+    if(!tabs.length){ console.error(LOG, 'no tabs found, navigation will not work'); return; }
+    tabs.forEach(function(t){
+      t.addEventListener('click', function(){ show(t.dataset.tab, { scroll: true }); });
+    });
+    /* Arrow-key navigation. No scroll and no fanfare: this is a
+       keyboard action and it should land instantly. */
+    tabs.forEach(function(t, i){
+      t.addEventListener('keydown', function(e){
+        var dir = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+        if(!dir) return;
+        e.preventDefault();
+        var next = tabs[(i + dir + tabs.length) % tabs.length];
+        next.focus();
+        show(next.dataset.tab);
+      });
+    });
+    document.querySelectorAll('[data-go]').forEach(function(b){
+      b.addEventListener('click', function(){ show(b.dataset.go, { scroll: true }); });
+    });
+    var hash = location.hash.slice(1);
+    if(hash && document.getElementById(hash) && document.getElementById(hash).classList.contains('view')){
+      show(hash);
+    } else {
+      paintIndicator('work');
+    }
+    window.addEventListener('resize', function(){ paintIndicator(current); });
+    if(document.fonts && document.fonts.ready){
+      document.fonts.ready.then(function(){ paintIndicator(current); })
+        .catch(function(err){ console.warn(LOG, 'font loading promise rejected, indicator may be misaligned:', err); });
+    }
+  }
+
+  /* ---------- Sticky header state ---------- */
+  function initStuck(){
+    var bar = document.getElementById('topbar');
+    if(!bar){ console.warn(LOG, 'topbar missing, skipping stuck state'); return; }
+    var onScroll = function(){ bar.dataset.stuck = window.scrollY > 8 ? 'true' : 'false'; };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  function boot(){
+    try{
+      initTheme();
+      initStuck();
+      initTabs();
+      initReveal();
+      revealIn(document.querySelector('.hero'));
+      /* Failsafe. If IntersectionObserver never fires (hidden tab, stalled
+         rAF, throttled frame) content must not stay invisible. */
+      setTimeout(function(){
+        var stuck = Array.prototype.filter.call(
+          document.querySelectorAll('.view.on .reveal:not(.in)'),
+          function(el){
+            /* Only rescue what the visitor can already see. Anything
+               below the fold keeps its scroll reveal. */
+            return el.getBoundingClientRect().top < window.innerHeight;
+          }
+        );
+        if(stuck.length){
+          console.warn(LOG, 'reveal failsafe fired for', stuck.length, 'on-screen element(s) that never intersected. Showing them now.');
+          stuck.forEach(function(el){ el.classList.add('in'); });
+        }
+      }, 1600);
+      console.info(LOG, 'ready. tabs:', tabs.length, 'views:', views.length, 'reduced-motion:', reduce.matches);
+    }catch(err){
+      console.error(LOG, 'boot failed. The page is still readable, but tabs or theme may be inert. error:', err);
+      Array.prototype.forEach.call(document.querySelectorAll('.reveal'), function(el){ el.classList.add('in'); });
+    }
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
+  }
+})();
+</script>
 </body>
 </html>

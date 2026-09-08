@@ -1,0 +1,8 @@
+# Wrangler's local cache holds the Cloudflare account id and deploy state.
+.wrangler/
+
+# Local preview config (must not ship: Pages serves dotfiles it uploads).
+.claude/
+
+.DS_Store
+*.log
