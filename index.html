@@ -366,6 +366,128 @@ img{max-width:100%;display:block}
   .tab-ghost,.tab-pill{transition:opacity var(--d-quick) var(--ease-out)}
   .live{animation:none}
 }
+
+/* ============================================================
+   PROJECT DETAIL MODAL
+   Cards open a full writeup. Modals keep transform-origin at
+   centre (they are not anchored to a trigger) and enter from
+   scale(.96), never from zero.
+   ============================================================ */
+.card{cursor:pointer}
+.card-open{
+  position:absolute;inset:0;width:100%;height:100%;
+  background:none;border:0;padding:0;margin:0;cursor:pointer;
+  font:inherit;color:transparent;z-index:2;
+}
+.card-open:focus-visible{outline:2px solid var(--gold);outline-offset:-3px;border-radius:20px}
+/* The overlay button covers the card, so anything genuinely clickable
+   inside it has to sit above that layer. */
+.card .card-foot a,.card .card-foot .repo{position:relative;z-index:3}
+.card-more{
+  display:inline-flex;align-items:center;gap:5px;
+  color:var(--gold);font:500 12px/1 var(--mono);white-space:nowrap;
+}
+.card-more .arrow{transition:transform var(--d-quick) var(--ease-out)}
+@media (hover:hover) and (pointer:fine){
+  .card:hover .card-more .arrow{transform:translateX(3px)}
+}
+
+.scrim{
+  position:fixed;inset:0;z-index:50;
+  background:color-mix(in srgb,#0b0a08 62%,transparent);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  opacity:0;transition:opacity var(--d-move) var(--ease-out);
+  display:grid;place-items:center;padding:24px;
+}
+.scrim[data-open=true]{opacity:1}
+.scrim[hidden]{display:none}
+
+.sheet{
+  width:min(880px,100%);max-height:min(86vh,900px);
+  background:var(--bg);border:1px solid var(--line-2);border-radius:22px;
+  box-shadow:var(--shadow-3);overflow:hidden;
+  display:flex;flex-direction:column;
+  opacity:0;transform:scale(.96) translateY(8px);
+  transition:opacity var(--d-move) var(--ease-out),transform var(--d-move) var(--ease-out);
+}
+.scrim[data-open=true] .sheet{opacity:1;transform:none}
+
+.sheet-top{
+  display:flex;align-items:flex-start;gap:18px;
+  padding:24px 26px 18px;border-bottom:1px solid var(--line);
+  background:var(--panel);
+}
+.sheet-top h2{font:400 clamp(26px,3.4vw,36px)/1.06 var(--display);letter-spacing:-.022em;margin:9px 0 0}
+.sheet-close{
+  margin-left:auto;flex:none;width:36px;height:36px;border-radius:999px;
+  border:1px solid var(--line);background:var(--bg);color:var(--text);
+  display:grid;place-items:center;cursor:pointer;
+  transition:transform var(--d-press) var(--ease-out),border-color var(--d-quick) var(--ease-out);
+}
+.sheet-close:active{transform:scale(.94)}
+@media (hover:hover) and (pointer:fine){.sheet-close:hover{border-color:var(--gold)}}
+.sheet-close svg{width:15px;height:15px}
+
+.sheet-body{overflow-y:auto;overscroll-behavior:contain;padding:24px 26px 30px}
+
+/* Gallery */
+.gal-main{
+  border:1px solid var(--line);border-radius:16px;overflow:hidden;
+  background:var(--panel-2);
+  /* Fixed height, full width. aspect-ratio plus max-height fights itself:
+     the box shrinks its width to keep the ratio. The writeup is the point
+     of this sheet, so the image gets a budget and the text gets the rest. */
+  height:320px;
+}
+.gal-main img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.gal-strip{display:flex;gap:9px;margin-top:10px;flex-wrap:wrap}
+.gal-thumb{
+  width:82px;height:52px;border-radius:9px;overflow:hidden;padding:0;cursor:pointer;
+  border:1px solid var(--line);background:var(--panel-2);
+  transition:border-color var(--d-quick) var(--ease-out),transform var(--d-press) var(--ease-out);
+}
+.gal-thumb img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.gal-thumb:active{transform:scale(.96)}
+.gal-thumb[aria-current=true]{border-color:var(--gold);box-shadow:0 0 0 2px color-mix(in srgb,var(--gold) 26%,transparent)}
+.gal-note{margin:9px 0 0;color:var(--faint);font-size:12px;line-height:1.5}
+
+/* Prose */
+.sheet h3{
+  font:500 10.5px/1 var(--mono);letter-spacing:.13em;text-transform:uppercase;
+  color:var(--gold);margin:28px 0 10px;
+}
+.sheet p{margin:0 0 12px;color:var(--muted);font-size:15px;line-height:1.68}
+.sheet p:last-child{margin-bottom:0}
+.sheet strong{color:var(--text);font-weight:600}
+.sheet ul{margin:0;padding:0;list-style:none;display:grid;gap:9px}
+.sheet li{position:relative;padding-left:19px;color:var(--muted);font-size:14.5px;line-height:1.6}
+.sheet li::before{
+  content:"";position:absolute;left:2px;top:.62em;width:5px;height:5px;border-radius:50%;
+  background:var(--gold);
+}
+.sheet li b{color:var(--text);font-weight:600}
+.note-box{
+  border-left:2px solid var(--gold);padding:2px 0 2px 15px;margin:16px 0 0;
+  color:var(--text);font-size:13.6px;line-height:1.62;
+}
+.sheet-foot{
+  display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+  margin-top:28px;padding-top:20px;border-top:1px solid var(--line);
+}
+
+@media(max-width:720px){
+  .scrim{padding:0;place-items:end stretch}
+  .sheet{width:100%;max-height:92vh;border-radius:20px 20px 0 0;border-bottom:0;
+         transform:translateY(16px) scale(1)}
+  .sheet-top{padding:20px 18px 15px}
+  .sheet-body{padding:20px 18px 26px}
+  .gal-main{height:230px}
+}
+@media(prefers-reduced-motion:reduce){
+  .sheet{transform:none;transition:opacity var(--d-move) var(--ease-out)}
+  .scrim[data-open=true] .sheet{transform:none}
+  .sheet-close:active,.gal-thumb:active{transform:none}
+}
 </style>
 </head>
 <body>
@@ -452,6 +574,7 @@ img{max-width:100%;display:block}
     <div class="grid">
 
       <article class="card wide reveal">
+        <button class="card-open" type="button" data-project="family-ops" aria-haspopup="dialog">Open Family Ops Dashboard details</button>
         <div class="shot"><img src="assets/myla-history.jpg" alt="Family Ops Dashboard history view: day selector, daily totals for feeds, diapers and sleep, and a 24 hour timeline" loading="eager" decoding="async" width="1300" height="700"></div>
         <div class="card-body">
           <div class="kicker">Production web app &#183; Cloudflare</div>
@@ -460,12 +583,13 @@ img{max-width:100%;display:block}
           <div class="detail"><b>The discipline:</b> 102 tests have to pass before any commit lands. This is the piece of my work that behaves most like real production software, because two people notice within minutes when it breaks.</div>
           <div class="card-foot">
             <div class="chips"><span class="chip">Next.js 16</span><span class="chip">Cloudflare Workers</span><span class="chip">D1 + Drizzle</span><span class="chip">R2</span><span class="chip">Passkeys</span></div>
-            <a class="repo" href="https://github.com/Gibbywithag/family-ops-dashboard" target="_blank" rel="noopener">Public repo <span class="arrow" aria-hidden="true">&#8599;</span></a>
+            <span class="card-more">Details <span class="arrow" aria-hidden="true">&#8594;</span></span><a class="repo" href="https://github.com/Gibbywithag/family-ops-dashboard" target="_blank" rel="noopener">Public repo <span class="arrow" aria-hidden="true">&#8599;</span></a>
           </div>
         </div>
       </article>
 
       <article class="card third reveal">
+        <button class="card-open" type="button" data-project="prediction-radar" aria-haspopup="dialog">Open Prediction Radar details</button>
         <div class="shot"><img src="assets/prediction-radar.jpg" alt="Terminal showing the Prediction Radar track record: 1320 resolved bets, 38 percent wins, plus 16.3 percent average ROI" loading="lazy" decoding="async" width="1040" height="640"></div>
         <div class="card-body">
           <div class="kicker">Data &#183; signals &#183; always on</div>
@@ -474,12 +598,13 @@ img{max-width:100%;display:block}
           <div class="detail"><b>The honest part:</b> it grades itself. 1,320 resolved positions at <b>+16.3% average ROI</b> on a 38% hit rate, recorded automatically as each market settles. The number can go down, which is the point.</div>
           <div class="card-foot">
             <div class="chips"><span class="chip">Python</span><span class="chip">SQLite</span><span class="chip">launchd</span></div>
-            <a class="repo" href="https://github.com/Gibbywithag/prediction-radar" target="_blank" rel="noopener">Public repo <span class="arrow" aria-hidden="true">&#8599;</span></a>
+            <span class="card-more">Details <span class="arrow" aria-hidden="true">&#8594;</span></span><a class="repo" href="https://github.com/Gibbywithag/prediction-radar" target="_blank" rel="noopener">Public repo <span class="arrow" aria-hidden="true">&#8599;</span></a>
           </div>
         </div>
       </article>
 
       <article class="card wide reveal">
+        <button class="card-open" type="button" data-project="sermon-clipper" aria-haspopup="dialog">Open SermonNoteClipper details</button>
         <div class="shot"><img src="assets/sermon-clipper-workspace.jpg" alt="Sermon Note Clipper workspace showing a sermon upload and the Generate Clips action" loading="lazy" decoding="async" width="1200" height="700"></div>
         <div class="card-body">
           <div class="kicker">AI video &#183; desktop &#183; computer vision</div>
@@ -488,12 +613,13 @@ img{max-width:100%;display:block}
           <div class="detail"><b>The interesting part:</b> packaging heavy ML into a calm workflow that a non technical media team can run without help.</div>
           <div class="card-foot">
             <div class="chips"><span class="chip">Python</span><span class="chip">YOLO</span><span class="chip">Whisper</span><span class="chip">Gemini</span></div>
-            <a class="repo" href="https://github.com/Gibbywithag/SermonNoteClipper" target="_blank" rel="noopener">Public repo <span class="arrow" aria-hidden="true">&#8599;</span></a>
+            <span class="card-more">Details <span class="arrow" aria-hidden="true">&#8594;</span></span><a class="repo" href="https://github.com/Gibbywithag/SermonNoteClipper" target="_blank" rel="noopener">Public repo <span class="arrow" aria-hidden="true">&#8599;</span></a>
           </div>
         </div>
       </article>
 
       <article class="card third reveal">
+        <button class="card-open" type="button" data-project="kalshi" aria-haspopup="dialog">Open Kalshi Quant Stack details</button>
         <div class="shot fit"><img src="assets/kalshi-risk.jpg" alt="Kalshi trading bot risk dashboard" loading="lazy" decoding="async" width="900" height="700"></div>
         <div class="card-body">
           <div class="kicker">Fintech &#183; live systems</div>
@@ -501,12 +627,13 @@ img{max-width:100%;display:block}
           <p>Backtesting and walk forward validation, live execution, position level risk coordination, and a monitoring dashboard for automated prediction market strategies. Built to be shut off safely as much as to be run.</p>
           <div class="card-foot">
             <div class="chips"><span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">React</span></div>
-            <span class="private">Private repo</span>
+            <span class="card-more">Details <span class="arrow" aria-hidden="true">&#8594;</span></span><span class="private">Private repo</span>
           </div>
         </div>
       </article>
 
       <article class="card half reveal">
+        <button class="card-open" type="button" data-project="pagetrail" aria-haspopup="dialog">Open PageTrail details</button>
         <div class="shot"><img src="assets/pagetrail-app-store.jpg" alt="PageTrail App Store screenshots showing story creation, the reader, and the Trail Log" loading="lazy" decoding="async" width="1200" height="800"></div>
         <div class="card-body">
           <div class="kicker">Mobile &#183; shipped to the App Store</div>
@@ -514,12 +641,13 @@ img{max-width:100%;display:block}
           <p>A native SwiftUI reading app that generates children's stories tuned to a chosen reading level, backed by Cloudflare Workers. Shipped through App Store review with StoreKit 2 subscriptions, receipt validation, and restore flows that survive a reinstall.</p>
           <div class="card-foot">
             <div class="chips"><span class="chip">SwiftUI</span><span class="chip">StoreKit 2</span><span class="chip">LLM</span></div>
-            <a class="repo" href="https://apps.apple.com/us/app/page-trail/id6760310383" target="_blank" rel="noopener">App Store <span class="arrow" aria-hidden="true">&#8599;</span></a>
+            <span class="card-more">Details <span class="arrow" aria-hidden="true">&#8594;</span></span><a class="repo" href="https://apps.apple.com/us/app/page-trail/id6760310383" target="_blank" rel="noopener">App Store <span class="arrow" aria-hidden="true">&#8599;</span></a>
           </div>
         </div>
       </article>
 
       <article class="card half reveal">
+        <button class="card-open" type="button" data-project="clip-namer" aria-haspopup="dialog">Open MNN Clip Namer details</button>
         <div class="shot"><img src="assets/mnn-clip-namer-real.jpg" alt="MNN Clip Namer interface showing AI assisted video clip review and naming" loading="lazy" decoding="async" width="1200" height="800"></div>
         <div class="card-body">
           <div class="kicker">Public &#183; cross platform desktop</div>
@@ -528,12 +656,13 @@ img{max-width:100%;display:block}
           <div class="detail"><b>Product detail:</b> retry with backoff, confidence badges on every guess, undo history, CSV export, and atomic renames so a crash mid batch never leaves half named files.</div>
           <div class="card-foot">
             <div class="chips"><span class="chip">Electron</span><span class="chip">TypeScript</span><span class="chip">OpenAI</span></div>
-            <a class="repo" href="https://github.com/Gibbywithag/mnn-clip-namer" target="_blank" rel="noopener">Public repo <span class="arrow" aria-hidden="true">&#8599;</span></a>
+            <span class="card-more">Details <span class="arrow" aria-hidden="true">&#8594;</span></span><a class="repo" href="https://github.com/Gibbywithag/mnn-clip-namer" target="_blank" rel="noopener">Public repo <span class="arrow" aria-hidden="true">&#8599;</span></a>
           </div>
         </div>
       </article>
 
       <article class="card third reveal">
+        <button class="card-open" type="button" data-project="cutback" aria-haspopup="dialog">Open Cutback details</button>
         <div class="shot"><img src="assets/cutback-dashboard.jpg" alt="Cutback dashboard showing calorie and macro targets" loading="lazy" decoding="async" width="900" height="700"></div>
         <div class="card-body">
           <div class="kicker">Offline first PWA</div>
@@ -541,12 +670,13 @@ img{max-width:100%;display:block}
           <p>Food, weight, habits, and check ins inside one calm daily loop. Offline first, so a logged meal on a dead subway connection is still there later. No account required and no data leaves the device unless you ask.</p>
           <div class="card-foot">
             <div class="chips"><span class="chip">React</span><span class="chip">PWA</span><span class="chip">Cloudflare</span></div>
-            <a class="repo" href="https://cutback.pages.dev/" target="_blank" rel="noopener">Live app <span class="arrow" aria-hidden="true">&#8599;</span></a>
+            <span class="card-more">Details <span class="arrow" aria-hidden="true">&#8594;</span></span><a class="repo" href="https://cutback.pages.dev/" target="_blank" rel="noopener">Live app <span class="arrow" aria-hidden="true">&#8599;</span></a>
           </div>
         </div>
       </article>
 
       <article class="card third reveal">
+        <button class="card-open" type="button" data-project="broll" aria-haspopup="dialog">Open MNN B-Roll Library details</button>
         <div class="shot"><img src="assets/mnn-broll-library.jpg" alt="MNN B-Roll Library search interface for a broadcast footage archive" loading="lazy" decoding="async" width="900" height="700"></div>
         <div class="card-body">
           <div class="kicker">Internal tooling &#183; broadcast</div>
@@ -554,12 +684,13 @@ img{max-width:100%;display:block}
           <p>Turns a mapped broadcast archive into a searchable, previewable b&#8209;roll library. Editors stop scrubbing folders and start finding shots: filters, hover previews, and one click to reveal the file on disk.</p>
           <div class="card-foot">
             <div class="chips"><span class="chip">Python</span><span class="chip">Flask</span><span class="chip">FFmpeg</span></div>
-            <span class="private">Internal tool</span>
+            <span class="card-more">Details <span class="arrow" aria-hidden="true">&#8594;</span></span><span class="private">Internal tool</span>
           </div>
         </div>
       </article>
 
       <article class="card third reveal">
+        <button class="card-open" type="button" data-project="autoweb" aria-haspopup="dialog">Open SouthEast AutoWeb details</button>
         <div class="shot"><img src="assets/southeast-autoweb-real.jpg" alt="SouthEast AutoWeb homepage for an automotive paint and equipment business" loading="lazy" decoding="async" width="900" height="700"></div>
         <div class="card-body">
           <div class="kicker">Client work &#183; web</div>
@@ -567,7 +698,7 @@ img{max-width:100%;display:block}
           <p>A client facing site for an automotive paint and equipment business. Built to the brief, handed over, and running: clear service storytelling, a conversion focused layout, and a stack the owner is not locked out of.</p>
           <div class="card-foot">
             <div class="chips"><span class="chip">React</span><span class="chip">TypeScript</span></div>
-            <a class="repo" href="https://github.com/Gibbywithag/SouthEast-AutoWeb" target="_blank" rel="noopener">Public repo <span class="arrow" aria-hidden="true">&#8599;</span></a>
+            <span class="card-more">Details <span class="arrow" aria-hidden="true">&#8594;</span></span><a class="repo" href="https://github.com/Gibbywithag/SouthEast-AutoWeb" target="_blank" rel="noopener">Public repo <span class="arrow" aria-hidden="true">&#8599;</span></a>
           </div>
         </div>
       </article>
@@ -633,6 +764,22 @@ img{max-width:100%;display:block}
 </section>
 </main>
 
+
+<div class="scrim" id="scrim" hidden>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title" id="sheet">
+    <div class="sheet-top">
+      <div>
+        <span class="mono" id="sheet-kicker"></span>
+        <h2 id="sheet-title"></h2>
+      </div>
+      <button class="sheet-close" id="sheet-close" type="button" aria-label="Close project details">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="sheet-body" id="sheet-body"></div>
+  </div>
+</div>
+
 <footer class="footer-wrap"><div class="shell"><div class="footer">
   <span>&#169; 2026 Gilbran Laureano &#183; Nashville, TN</span>
   <span>Built from scratch &#183; designed for people who like to see the work</span>
@@ -644,6 +791,9 @@ img{max-width:100%;display:block}
   var LOG = '[portfolio]';
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
 
+
+  /* ---------- Project detail content ---------- */
+  var PROJECTS = {"family-ops":{"kicker":"Production web app &#183; Cloudflare","title":"Family Ops Dashboard","images":[["assets/myla-history.jpg","The history view: a day selector, daily totals, a 24 hour timeline, and age-appropriate guidance under it."]],"note":"Captured from a local development build with a demo name and a seeded day, so no real family data is shown.","what":"A private household dashboard that two people rely on every day. It replaces the usual pile of baby tracking apps with one screen that answers the only questions that matter at 3am: when was the last feed, how long has she been asleep, and is the monitor actually reporting.","how":"The whole app is a Next.js 16 project compiled to a <strong>single Cloudflare Worker</strong>, so there is no separate server to keep alive. Data lives in <strong>D1</strong> through Drizzle, photos in <strong>R2</strong>, and sign in is <strong>passkey only</strong> through WebAuthn, which means there is no password to leak, phish, or reset. A second Worker polls an Owlet sock on a <strong>Durable Object alarm loop</strong> and writes its own health into a state table.","features":["<b>One tap logging</b> for bottle, nursing, diaper, and sleep, with running timers that survive a refresh and a closed tab.","<b>Day history</b> with per day totals, a 24 hour timeline bar, and a by time or by type toggle.","<b>Age aware guidance</b> that compares the day against what is typical for her age rather than a fixed target.","<b>Milestones and growth</b> with photo upload straight to R2.","<b>Honest failure states.</b> When the sock stops reporting the app says so and shows how stale the reading is, instead of rendering a confident zero."],"note2":"<b>The discipline:</b> a 102 test suite has to pass before any commit lands. It is the piece of my work that behaves most like real production software, because two people notice within minutes when it breaks.","chips":["Next.js 16","Cloudflare Workers","D1 + Drizzle","R2","Durable Objects","Passkeys"],"link":["https://github.com/Gibbywithag/family-ops-dashboard","Public repo"]},"prediction-radar":{"kicker":"Data &#183; signals &#183; always on","title":"Prediction Radar","images":[["assets/prediction-radar.jpg","The self graded track record, printed straight from the results file."]],"note":"","what":"An always on tracker that watches where informed money is moving in prediction markets, scores what it finds, and tells me about only the small slice worth acting on. It started because the interesting signal was real but the noise around it was unbearable: roughly 720 alerts a day, which is the same as no alerts at all.","how":"A single Python service polls <strong>Polymarket whale wallets</strong> and <strong>Kalshi exchange activity</strong>, scores each candidate on price, timing, and who is moving, then routes the survivors to Discord embeds and to <strong>AI gated iMessage alerts</strong> so only the strongest ever buzz a phone. It runs unattended under <strong>launchd</strong> and keeps everything in SQLite.","features":["<b>Signal scoring</b> that killed the categories which were losing money, including an arbitrage path running at negative ROI.","<b>Sharp Picks</b>, a high confidence subset, with a single flag to make the feed as quiet as roughly three alerts an hour.","<b>A 7am digest</b> summarising overnight activity as one calm message instead of a firehose.","<b>Automatic grading.</b> Every alert is scored against the real settlement price once its market resolves.","<b>Self monitoring</b>, so a failing job reports itself rather than going quietly silent."],"note2":"<b>The honest part:</b> 1,320 resolved positions at <b>+16.3% average ROI</b> on a 38% hit rate. A low hit rate with positive expected value is the expected shape here, and because grading is automatic the number can go down as easily as up. That is the point of keeping it.","chips":["Python","SQLite","launchd","Discord API"],"link":["https://github.com/Gibbywithag/prediction-radar","Public repo"]},"sermon-clipper":{"kicker":"AI video &#183; desktop &#183; computer vision","title":"SermonNoteClipper","images":[["assets/sermon-clipper-workspace.jpg","The workspace: drop in a full message, get back vertical clips ready to post."]],"note":"","what":"Long form sermon video in, ready to post vertical clips out, built so a church media volunteer can run it without a developer nearby. It is <strong>built on OpenShorts</strong> (MIT licensed), rebranded and rebuilt around church media work rather than general viral content.","how":"One pipeline chains the whole job: <strong>yt-dlp</strong> or a local upload, <strong>faster-whisper</strong> for word level transcription, <strong>PySceneDetect</strong> for segment boundaries, <strong>Gemini</strong> to pick the moments worth cutting, FFmpeg to extract them, then vertical reframing with <strong>MediaPipe face detection and a YOLOv8 fallback</strong>. Optional passes add burned in subtitles, hook overlays, and ElevenLabs voice dubbing.","features":["<b>Two reframing modes:</b> a stabilised single subject tracker for one speaker, and a blurred background layout for groups and wide shots.","<b>Camera stabilisation</b> that resists both jitter and rapid speaker switching when someone briefly blocks the frame.","<b>A persistent exports page</b>, added after finished clips were being deleted by an over eager cleanup job.","<b>One click installer</b> that provisions Docker, builds the stack, and opens the app.","<b>Local first by design.</b> The launcher binds to 127.0.0.1 and CORS is locked to localhost, because the API is unauthenticated and must never face a network."],"note2":"<b>What is mine:</b> 33 commits of product and hardening work on top of the upstream project. Parallelised transcription, an adversarial security audit and the fixes from it, two separate data loss bugs, export quality regressions, the exports page, the Docker packaging, and the installer. The credit to OpenShorts is in the README.","chips":["Python","FastAPI","Whisper","Gemini","YOLOv8","FFmpeg","Docker"],"link":["https://github.com/Gibbywithag/SermonNoteClipper","Public repo"]},"kalshi":{"kicker":"Fintech &#183; live systems","title":"Kalshi Quant Stack","images":[["assets/kalshi-risk.jpg","The risk and coordination dashboard: capital in play, per bot heartbeats, and live position state."]],"note":"","what":"A working stack for running automated strategies on a real prediction market exchange, with as much attention paid to stopping safely as to placing trades. Real money makes the boring parts, reconciliation, risk limits, and heartbeats, the parts that actually matter.","how":"Strategies are validated offline first through backtesting and walk forward testing, then promoted to a live executor that talks to the exchange API. A <strong>risk coordinator</strong> sits between the strategies and the exchange so several bots cannot independently decide to spend the same capital, and a React dashboard reports position state, capital in play, and per bot heartbeats.","features":["<b>Backtest and walk forward validation</b> before any strategy is allowed near live capital.","<b>Central risk coordination</b> so concurrent bots share one view of exposure.","<b>Heartbeat monitoring</b> per bot, so a silently dead process is visible rather than assumed healthy.","<b>A paper trading mode</b> that runs the identical code path against simulated fills.","<b>Documented kill paths.</b> Every bot can be stopped without leaving open positions unmanaged."],"note2":"<b>Why it stays private:</b> the repo carries live API credentials and signing keys in its working tree. It is on the site for what it demonstrates, not as something to hand out.","chips":["Python","FastAPI","React","SQLite"],"link":null},"pagetrail":{"kicker":"Mobile &#183; shipped to the App Store","title":"PageTrail","images":[["assets/pagetrail-app-store.jpg","App Store listing: story creation, the reader, and the trail log."]],"note":"","what":"A native iOS reading app that generates children's stories tuned to a chosen reading level, so a parent can produce something age appropriate in a few seconds rather than hunting for it. It went through App Store review and is live with paid subscriptions.","how":"The app is <strong>SwiftUI</strong> end to end, talking to a <strong>Cloudflare Workers</strong> backend that holds the model calls and the prompt work, so no key ever ships inside the binary. Subscriptions run on <strong>StoreKit 2</strong> with server side receipt validation.","features":["<b>Grade tuned generation</b>, so vocabulary and sentence length track the reading level rather than the topic alone.","<b>A trail log</b> that keeps what has been read and lets a child return to earlier stories.","<b>StoreKit 2 subscriptions</b> with restore flows that survive a reinstall or a new device.","<b>Keys held server side</b> in a Worker, never in the app bundle.","<b>Shipped through review</b>, which meant meeting Apple's rules for kids content, subscription disclosure, and account free use."],"note2":"<b>The honest status:</b> it is live and it works, but marketing stopped in April and at $0.99 a month it has no real pricing power. The build is not the thing that is missing.","chips":["SwiftUI","StoreKit 2","Cloudflare Workers","LLM"],"link":["https://apps.apple.com/us/app/page-trail/id6760310383","App Store"]},"clip-namer":{"kicker":"Public &#183; cross platform desktop","title":"MNN Clip Namer","images":[["assets/mnn-clip-namer-real.jpg","Review screen: proposed filenames with confidence badges before anything is renamed."]],"note":"","what":"Drag in a video clip, get back a filename that says what is actually in it. Built for a broadcast team sitting on folders of camera original filenames that tell you nothing, where naming everything by hand is the reason nobody does it.","how":"An <strong>Electron</strong> app pulls keyframes locally, sends them through a <strong>Cloudflare Worker</strong> to <strong>GPT-4o-mini Vision</strong>, and proposes a name. The Worker holds the API key, which is the point: the end user needs no account, no key, and no setup, so it can be handed to a colleague as an app rather than a project.","features":["<b>Confidence badges</b> on every proposal, so a weak guess is visibly weak rather than silently wrong.","<b>Review before rename.</b> Nothing is written to disk until it is approved.","<b>Atomic renames</b> and undo history, so a crash mid batch never leaves half renamed files.","<b>Retry with backoff</b> on the vision call, because a single flaky request should not fail a batch of eighty.","<b>CSV export</b> of the mapping, for anyone who wants the old and new names side by side."],"note2":"","chips":["Electron","TypeScript","Cloudflare Workers","OpenAI"],"link":["https://github.com/Gibbywithag/mnn-clip-namer","Public repo"]},"cutback":{"kicker":"Offline first PWA","title":"Cutback","images":[["assets/cutback-plan.jpg","Onboarding ends with a starting plan and macro targets, framed as a starting point rather than a verdict."],["assets/cutback-add.jpg","Food logging leads with four common foods and a photo option, because the first log is where these apps lose people."],["assets/cutback-dashboard.jpg","The daily dashboard: calories and macros against the day's targets."]],"note":"","what":"Food, weight, habits, and check ins inside one calm daily loop. Most trackers fail at the same two points: signing up, and logging the first meal. This one has no account at all and puts four common foods on the first screen.","how":"A React <strong>progressive web app</strong> that is <strong>offline first</strong>, so everything works with no connection and reconciles later. There is no account: state lives on the device, and the optional recovery step only stores an encrypted backup you can pull to a new phone. Hosted on Cloudflare Pages.","features":["<b>No account required.</b> Open it and start, with nothing to verify by email.","<b>A starting plan</b> generated from weight, goal, and pace, presented as a starting target rather than a metabolism verdict.","<b>Offline logging</b>, so a meal logged with no signal is still there later.","<b>Photo logging</b> as an alternative to searching a food database.","<b>Optional encrypted recovery.</b> Leave the email blank and it stays device only."],"note2":"","chips":["React","PWA","Cloudflare Pages"],"link":["https://cutback.pages.dev/","Live app"]},"broll":{"kicker":"Internal tooling &#183; broadcast","title":"MNN B-Roll Library","images":[["assets/mnn-broll-library.jpg","Search across a mapped archive, with previews and a jump to the file on disk."]],"note":"","what":"A local first footage library that turns a mapped broadcast archive into something searchable. The problem was not storage, it was retrieval: editors knew the shot existed and still lost ten minutes finding it.","how":"A <strong>Flask</strong> app indexes a mapped archive into <strong>SQLite</strong> and uses <strong>FFmpeg</strong> to generate preview thumbnails. It stays local first because the archive lives on a network volume and nothing about it should need a cloud round trip.","features":["<b>Search and filters</b> across the indexed archive rather than folder names.","<b>Hover previews</b>, so a clip can be judged without opening it.","<b>One click to reveal</b> the file in its actual location on disk, which is what an editor needs next.","<b>Incremental indexing</b>, so a growing archive does not mean a full rescan.","<b>Runs entirely on the local network.</b> No upload step and no external dependency."],"note2":"<b>Why it stays private:</b> it is internal tooling tied to a specific station archive layout, so the repo is not useful outside that context.","chips":["Python","Flask","SQLite","FFmpeg"],"link":null},"autoweb":{"kicker":"Client work &#183; web","title":"SouthEast AutoWeb","images":[["assets/southeast-autoweb-real.jpg","The homepage: service storytelling above the fold with a single clear next step."]],"note":"","what":"A client facing site for an automotive paint and equipment business. Real client work, which means the brief, the handover, and the owner not being locked out afterwards all counted as much as the build.","how":"A <strong>React and TypeScript</strong> front end built around the services the business actually sells, with the layout arranged for one clear next step rather than a general brochure. Delivered with the source in the client's hands.","features":["<b>Service led structure</b>, so the products are findable rather than buried under an about page.","<b>Conversion focused layout</b> with a single obvious action on each section.","<b>Responsive from the start</b>, since most of the traffic is on a phone in a shop.","<b>Handed over cleanly.</b> Public repo, no proprietary lock in, nothing that needs me to keep it running."],"note2":"","chips":["React","TypeScript"],"link":["https://github.com/Gibbywithag/SouthEast-AutoWeb","Public repo"]}};
   /* ---------- Theme ---------- */
   function initTheme(){
     var btn = document.getElementById('theme');
@@ -771,6 +921,138 @@ img{max-width:100%;display:block}
     }
   }
 
+
+  /* ---------- Project detail modal ----------
+     Opens from a card, traps focus while open, restores it on close,
+     and locks the page behind it. Escape always closes. */
+  var scrim = document.getElementById('scrim');
+  var sheet = document.getElementById('sheet');
+  var sheetBody = document.getElementById('sheet-body');
+  var lastTrigger = null;
+  var scrollLockY = 0;
+
+  function esc(str){
+    return String(str).replace(/&(?![a-zA-Z#][a-zA-Z0-9]*;)/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  function galleryHtml(p){
+    if(!p.images || !p.images.length) return '';
+    var first = p.images[0];
+    var html = '<figure style="margin:0">'
+      + '<div class="gal-main"><img id="gal-img" src="' + first[0] + '" alt="' + esc(first[1]) + '"></div>';
+    if(p.images.length > 1){
+      html += '<div class="gal-strip" role="group" aria-label="More images">';
+      p.images.forEach(function(im, i){
+        html += '<button class="gal-thumb" type="button" data-i="' + i + '" aria-current="' + (i===0) + '"'
+             +  ' aria-label="Show image ' + (i+1) + ' of ' + p.images.length + '">'
+             +  '<img src="' + im[0] + '" alt=""></button>';
+      });
+      html += '</div>';
+    }
+    html += '<figcaption class="gal-note" id="gal-cap">' + esc(first[1]) + '</figcaption>';
+    if(p.note) html += '<p class="gal-note">' + esc(p.note) + '</p>';
+    return html + '</figure>';
+  }
+
+  function render(id){
+    var p = PROJECTS[id];
+    if(!p){ console.error(LOG, 'no project detail for id:', id); return false; }
+    document.getElementById('sheet-kicker').innerHTML = p.kicker;
+    document.getElementById('sheet-title').textContent = p.title;
+
+    var h = galleryHtml(p);
+    h += '<h3>What it is</h3><p>' + p.what + '</p>';
+    h += '<h3>How it works</h3><p>' + p.how + '</p>';
+    if(p.features && p.features.length){
+      h += '<h3>What it does</h3><ul>';
+      p.features.forEach(function(f){ h += '<li>' + f + '</li>'; });
+      h += '</ul>';
+    }
+    if(p.note2) h += '<div class="note-box">' + p.note2 + '</div>';
+    h += '<div class="sheet-foot"><div class="chips">';
+    (p.chips||[]).forEach(function(c){ h += '<span class="chip">' + esc(c) + '</span>'; });
+    h += '</div>';
+    h += p.link
+      ? '<a class="repo" href="' + p.link[0] + '" target="_blank" rel="noopener">' + esc(p.link[1]) + ' <span class="arrow" aria-hidden="true">&#8599;</span></a>'
+      : '<span class="private">Private repo</span>';
+    h += '</div>';
+    sheetBody.innerHTML = h;
+
+    var thumbs = [].slice.call(sheetBody.querySelectorAll('.gal-thumb'));
+    thumbs.forEach(function(t){
+      t.addEventListener('click', function(){
+        var im = p.images[Number(t.dataset.i)];
+        if(!im){ console.warn(LOG, 'thumb index out of range:', t.dataset.i); return; }
+        var img = document.getElementById('gal-img');
+        img.src = im[0]; img.alt = im[1];
+        document.getElementById('gal-cap').textContent = im[1];
+        thumbs.forEach(function(o){ o.setAttribute('aria-current', String(o === t)); });
+      });
+    });
+    return true;
+  }
+
+  function focusables(){
+    return [].slice.call(sheet.querySelectorAll(
+      'a[href],button:not([disabled]),[tabindex]:not([tabindex="-1"])'
+    )).filter(function(el){ return el.offsetParent !== null; });
+  }
+
+  function openSheet(id, trigger){
+    if(!render(id)) return;
+    lastTrigger = trigger || document.activeElement;
+    scrollLockY = window.scrollY;
+    scrim.hidden = false;
+    /* Force a frame so the transition runs from the hidden state
+       instead of snapping straight to open. */
+    void scrim.offsetHeight;
+    scrim.dataset.open = 'true';
+    document.body.style.position = 'fixed';
+    document.body.style.top = -scrollLockY + 'px';
+    document.body.style.width = '100%';
+    sheetBody.scrollTop = 0;
+    document.getElementById('sheet-close').focus();
+    console.info(LOG, 'opened project detail:', id);
+  }
+
+  function closeSheet(){
+    if(scrim.hidden) return;
+    scrim.dataset.open = 'false';
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    window.scrollTo(0, scrollLockY);
+    var done = function(){
+      scrim.hidden = true;
+      sheetBody.innerHTML = '';
+      scrim.removeEventListener('transitionend', done);
+    };
+    if(reduce.matches){ done(); } else { scrim.addEventListener('transitionend', done); setTimeout(done, 400); }
+    if(lastTrigger && document.contains(lastTrigger)) lastTrigger.focus();
+  }
+
+  function initSheet(){
+    if(!scrim || !sheet || !sheetBody){
+      console.error(LOG, 'modal markup missing; project cards will not open');
+      return;
+    }
+    document.querySelectorAll('.card-open').forEach(function(b){
+      b.addEventListener('click', function(){ openSheet(b.dataset.project, b); });
+    });
+    document.getElementById('sheet-close').addEventListener('click', closeSheet);
+    scrim.addEventListener('mousedown', function(e){ if(e.target === scrim) closeSheet(); });
+    document.addEventListener('keydown', function(e){
+      if(scrim.hidden) return;
+      if(e.key === 'Escape'){ e.preventDefault(); closeSheet(); return; }
+      if(e.key !== 'Tab') return;
+      var f = focusables();
+      if(!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+      else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+    });
+  }
+
   /* ---------- Sticky header state ---------- */
   function initStuck(){
     var bar = document.getElementById('topbar');
@@ -785,6 +1067,7 @@ img{max-width:100%;display:block}
       initTheme();
       initStuck();
       initTabs();
+      initSheet();
       initReveal();
       revealIn(document.querySelector('.hero'));
       /* Failsafe. If IntersectionObserver never fires (hidden tab, stalled
